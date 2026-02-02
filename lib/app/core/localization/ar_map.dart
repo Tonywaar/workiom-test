@@ -15,8 +15,8 @@ Map<String, String> ar = {
   TStrings.termsOfService: "شروط الاستخدام",
   TStrings.and: " و ",
   TStrings.privacyPolicy: "سياسة الخصوصية",
-  TStrings.english: "الإنجليزية",
-  TStrings.arabic: "العربية",
+  TStrings.english: "English",
+  TStrings.arabic: "عربي",
 
   //login
   TStrings.loginTitle: "أدخل كلمة مرور قوية",

@@ -5,6 +5,7 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:get/get.dart';
+export 'package:measure_size_builder/measure_size_builder.dart';
 
 export 'app/core/generated/assets.gen.dart';
 export 'app/core/localization/strings.dart';
@@ -24,6 +25,10 @@ export 'app/core/utils/colors.dart';
 export 'app/core/utils/consts.dart';
 export 'app/core/utils/injector.dart';
 export 'app/core/widgets/app_scaffold.dart';
+export 'app/core/widgets/custom_svg.dart';
+export 'app/core/widgets/custom_loading_widget.dart';
+export 'app/core/widgets/wraper_widget.dart';
+export 'app/core/widgets/custom_button.dart';
 export 'app/data/data_consts.dart';
 export 'app/data/data_service.dart';
 export 'app/data/data_state.dart';
