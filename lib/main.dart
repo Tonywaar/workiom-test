@@ -47,8 +47,8 @@ class WorkiomApp extends StatelessWidget {
           darkTheme: TAppTheme.lightTheme,
           //
           translations: AppTranslations(),
-          locale: Locale(cache.read(CacheHelper.language) ?? 'ar'),
-          fallbackLocale: const Locale('ar'),
+          locale: Locale(cache.read(CacheHelper.language) ?? 'en'),
+          fallbackLocale: const Locale('en'),
           //
           builder: (context, child) {
             AppFunctions.setStatusBarStyle();

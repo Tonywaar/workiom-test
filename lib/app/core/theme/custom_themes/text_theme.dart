@@ -9,7 +9,7 @@ class TTextTheme {
   static TextTheme lightTextTheme = TextTheme(
     headlineLarge: const TextStyle().copyWith(
       fontSize: 24.sp,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w500,
       fontFamily: 'Rubik',
       color: TColors.textPrimary,
     ),
@@ -27,13 +27,13 @@ class TTextTheme {
     ),
     titleLarge: const TextStyle().copyWith(
       fontSize: 19.sp,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w500,
       fontFamily: 'Rubik',
       color: TColors.textPrimary,
     ),
     titleMedium: const TextStyle().copyWith(
       fontSize: 14.sp,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w500,
       fontFamily: 'Rubik',
       color: TColors.textPrimary,
     ),
@@ -45,7 +45,7 @@ class TTextTheme {
     ),
     bodyLarge: const TextStyle().copyWith(
       fontSize: 16.sp,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w500,
       fontFamily: 'Rubik',
       color: TColors.textPrimary,
     ),
