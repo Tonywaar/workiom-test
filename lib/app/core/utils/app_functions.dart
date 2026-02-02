@@ -53,11 +53,11 @@ class AppFunctions {
   static void setStatusBarStyle() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-        statusBarColor: TColors.primary,
-        statusBarIconBrightness: Brightness.light,
+        statusBarColor: TColors.whiteColor,
+        statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,
-        systemNavigationBarColor: TColors.primary,
-        systemNavigationBarIconBrightness: Brightness.light,
+        systemNavigationBarColor: TColors.whiteColor,
+        systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
   }
