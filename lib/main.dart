@@ -1,9 +1,12 @@
+import 'package:get_storage/get_storage.dart';
 import 'package:workiom/export.dart';
 
 import 'app/core/localization/translations.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await GetStorage.init();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

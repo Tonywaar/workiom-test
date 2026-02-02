@@ -1,6 +1,4 @@
-import 'package:get_storage/get_storage.dart';
-
-import '../../../../export.dart';
+import 'package:workiom/export.dart';
 
 class SplashController extends GetxController {
   var isLoading = true.obs;
@@ -14,7 +12,6 @@ class SplashController extends GetxController {
 
   Future<void> _initializeApp() async {
     isLoading(true);
-    await GetStorage.init();
     await initDependencies();
 
     await Future.delayed(const Duration(seconds: 5));

@@ -62,6 +62,11 @@ class AuthView extends GetView<AuthController> {
                   mainAxisSize: .min,
                   children: [
                     ListTile(
+                      onTap: () {
+                        cache.write(CacheHelper.language, "en");
+                        Get.updateLocale(Locale("en"));
+                        Get.back();
+                      },
                       leading: Icon(
                         Get.locale?.languageCode == "en"
                             ? CupertinoIcons.check_mark_circled
@@ -70,6 +75,11 @@ class AuthView extends GetView<AuthController> {
                       title: Text(TStrings.english.tr.capitalize ?? ""),
                     ),
                     ListTile(
+                      onTap: () {
+                        cache.write(CacheHelper.language, "ar");
+                        Get.updateLocale(Locale("ar"));
+                        Get.back();
+                      },
                       leading: Icon(
                         Get.locale?.languageCode == "ar"
                             ? CupertinoIcons.check_mark_circled
@@ -91,7 +101,12 @@ class AuthView extends GetView<AuthController> {
               mainAxisAlignment: .center,
               children: [
                 CustomSvg(Assets.icons.globe, width: 15.sp, height: 15.sp),
-                Text(TStrings.english.capitalize ?? ""),
+                Text(
+                  (Get.locale?.languageCode == "en" ? TStrings.english : TStrings.arabic)
+                          .tr
+                          .capitalize ??
+                      "",
+                ),
                 Icon(Icons.arrow_drop_down_rounded),
               ],
             ),
