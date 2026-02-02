@@ -71,7 +71,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
 
         Row(
           children: [
-            if (widget.prefix != null) ...[widget.prefix!, 5.horizontalSpace],
+            if (widget.prefix != null) ...[widget.prefix!, 10.horizontalSpace],
             Expanded(
               child: TextFormField(
                 textAlignVertical: widget.isPassword
@@ -117,12 +117,10 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                               ),
                             )
                           : null),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 5.w,
-                  ).copyWith(top: widget.isPassword ? 0 : 15.h),
-                  hintStyle: Theme.of(
-                    context,
-                  ).textTheme.bodyMedium!.copyWith(color: TColors.textGrey, fontSize: 13.sp),
+                  // contentPadding: EdgeInsets.symmetric(
+                  //   horizontal: 5.w,
+                  // ).copyWith(top: widget.isPassword || widget.prefix != null ? 0 : 15.h),
+                  hintStyle: Theme.of(context).textTheme.bodyMedium,
                   errorStyle: Theme.of(
                     context,
                   ).textTheme.bodySmall!.copyWith(color: TColors.redColor, fontSize: 12.sp),
@@ -143,7 +141,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                   ),
                 ),
                 obscureText: widget.isPassword && !isVisible,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 1.5),
+                style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 2.5),
               ),
             ),
           ],

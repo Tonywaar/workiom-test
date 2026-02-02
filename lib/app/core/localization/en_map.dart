@@ -33,7 +33,9 @@ Map<String, String> en = {
   TStrings.companyTitle: "Enter your company name",
   TStrings.yourCompanyName: "Your  company or team name",
   TStrings.firstName: "Your first name",
-  TStrings.lastName: "Your  last name",
+  TStrings.enterFirstName: "Enter your first name",
+  TStrings.lastName: "Your last name",
+  TStrings.enterLastName: "Enter your last name",
   TStrings.createWorkSpace: "Create Workspace",
   TStrings.companyNameNotAvailable: "This company or team name is not available",
 

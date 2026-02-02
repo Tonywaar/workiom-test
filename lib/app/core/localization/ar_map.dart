@@ -33,7 +33,9 @@ Map<String, String> ar = {
   TStrings.companyTitle: "أدخل اسم شركتك",
   TStrings.yourCompanyName: "اسم الشركة أو الفريق",
   TStrings.firstName: "الاسم الأول",
+  TStrings.enterFirstName: "ادخل الاسم الأول",
   TStrings.lastName: "اسم العائلة",
+  TStrings.enterLastName: "ادخل اسم العائلة",
   TStrings.createWorkSpace: "إنشاء مساحة عمل",
   TStrings.companyNameNotAvailable: "اسم الشركة أو الفريق غير متاح",
 

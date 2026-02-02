@@ -25,7 +25,11 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> postData<T>({dynamic data, required String endPoint, required Function(Map<String, dynamic>) fromJson}) async {
+  Future<DataState<T>> postData<T>({
+    dynamic data,
+    required String endPoint,
+    required Function(Map<String, dynamic>) fromJson,
+  }) async {
     try {
       final response = await _dio.post(
         DataConsts.baseUrl + endPoint,
@@ -55,7 +59,11 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> deleteData<T>({dynamic data, required String endPoint, required Function(Map<String, dynamic>) fromJson}) async {
+  Future<DataState<T>> deleteData<T>({
+    dynamic data,
+    required String endPoint,
+    required Function(Map<String, dynamic>) fromJson,
+  }) async {
     try {
       final response = await _dio.delete(
         DataConsts.baseUrl + endPoint,
@@ -68,7 +76,11 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> putData<T>({dynamic data, required String endPoint, required Function(Map<String, dynamic>) fromJson}) async {
+  Future<DataState<T>> putData<T>({
+    dynamic data,
+    required String endPoint,
+    required Function(Map<String, dynamic>) fromJson,
+  }) async {
     try {
       final response = await _dio.put(
         DataConsts.baseUrl + endPoint,
@@ -81,7 +93,10 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> handleDataState<T>({required dio.Response? response, required Function(Map<String, dynamic>) fromJson}) async {
+  Future<DataState<T>> handleDataState<T>({
+    required dio.Response? response,
+    required Function(Map<String, dynamic>) fromJson,
+  }) async {
     if (response != null) {
       if (response.statusCode == HttpStatus.ok || response.statusCode == HttpStatus.created) {
         final object = fromJson(response.data);

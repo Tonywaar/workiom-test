@@ -40,8 +40,16 @@ class AppFunctions {
   static bool isLTR(String text) {
     final englishRegex = RegExp(r'[a-zA-Z]');
     final arabicRegex = RegExp(r'[\u0600-\u06FF]');
-    final englishCount = text.splitMapJoin(englishRegex, onMatch: (m) => m.group(0) ?? '', onNonMatch: (n) => '');
-    final arabicCount = text.splitMapJoin(arabicRegex, onMatch: (m) => m.group(0) ?? '', onNonMatch: (n) => '');
+    final englishCount = text.splitMapJoin(
+      englishRegex,
+      onMatch: (m) => m.group(0) ?? '',
+      onNonMatch: (n) => '',
+    );
+    final arabicCount = text.splitMapJoin(
+      arabicRegex,
+      onMatch: (m) => m.group(0) ?? '',
+      onNonMatch: (n) => '',
+    );
     return englishCount.length >= arabicCount.length;
   }
 

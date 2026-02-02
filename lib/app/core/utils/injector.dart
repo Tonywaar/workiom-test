@@ -15,7 +15,12 @@ Future<void> initDependencies() async {
   );
 
   dio.interceptors.add(
-    PrettyDioLogger(requestBody: true, error: true, requestHeader: true, logPrint: (object) => AppFunctions.print(object)),
+    PrettyDioLogger(
+      requestBody: true,
+      error: true,
+      requestHeader: true,
+      logPrint: (object) => AppFunctions.print(object),
+    ),
   );
 
   injector.registerSingleton<Dio>(dio);

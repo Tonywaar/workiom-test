@@ -1,14 +1,17 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:workiom/app/core/widgets/app_title.dart';
-import 'package:workiom/app/core/widgets/labeled_text_field.dart';
-
 import 'package:workiom/export.dart';
 
 import '../controllers/auth_controller.dart';
 
-class LoginView extends GetView<AuthController> {
+class LoginView extends StatefulWidget {
   const LoginView({super.key});
+
+  @override
+  State<LoginView> createState() => _LoginViewState();
+}
+
+class _LoginViewState extends State<LoginView> {
+  AuthController controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -115,7 +118,9 @@ class LoginView extends GetView<AuthController> {
                     color: TColors.greyColor,
                     withEnter: true,
                     title: TStrings.confirmPassword.tr,
-                    onTap: () {},
+                    onTap: () {
+                      Get.toNamed(Routes.COMPANY);
+                    },
                   ),
                 ],
               ),

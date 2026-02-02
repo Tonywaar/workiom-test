@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
-import 'package:workiom/app/core/widgets/app_title.dart';
 import 'package:workiom/app/modules/auth/views/login_view.dart';
 import 'package:workiom/export.dart';
 

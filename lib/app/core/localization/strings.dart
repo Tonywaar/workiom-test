@@ -31,7 +31,9 @@ class TStrings {
   static String companyTitle = "companyTitle";
   static String yourCompanyName = "yourCompanyName";
   static String firstName = "firstName";
+  static String enterFirstName = "enterFirstName";
   static String lastName = "lastName";
+  static String enterLastName = "enterLastName";
   static String createWorkSpace = "createWorkSpace";
   static String companyNameNotAvailable = "companyNameNotAvailable";
 
