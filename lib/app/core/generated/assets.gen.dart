@@ -11,28 +11,63 @@
 
 import 'package:flutter/widgets.dart';
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/enter.svg
+  String get enter => 'assets/icons/enter.svg';
+
+  /// File path: assets/icons/globe.svg
+  String get globe => 'assets/icons/globe.svg';
+
+  /// File path: assets/icons/google.svg
+  String get google => 'assets/icons/google.svg';
+
+  /// File path: assets/icons/group.svg
+  String get group => 'assets/icons/group.svg';
+
+  /// File path: assets/icons/icon.svg
+  String get icon => 'assets/icons/icon.svg';
+
+  /// File path: assets/icons/lock.svg
+  String get lock => 'assets/icons/lock.svg';
+
+  /// File path: assets/icons/logo.svg
+  String get logo => 'assets/icons/logo.svg';
+
+  /// File path: assets/icons/message.svg
+  String get message => 'assets/icons/message.svg';
+
+  /// File path: assets/icons/name.svg
+  String get name => 'assets/icons/name.svg';
+
+  /// File path: assets/icons/right.svg
+  String get right => 'assets/icons/right.svg';
+
+  /// File path: assets/icons/warning.svg
+  String get warning => 'assets/icons/warning.svg';
+
+  /// File path: assets/icons/wrong.svg
+  String get wrong => 'assets/icons/wrong.svg';
+
+  /// List of all assets
+  List<String> get values => [enter, globe, google, group, icon, lock, logo, message, name, right, warning, wrong];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/google.svg
-  String get google => 'assets/images/google.svg';
-
   /// File path: assets/images/icon.png
-  AssetGenImage get iconPng => const AssetGenImage('assets/images/icon.png');
-
-  /// File path: assets/images/icon.svg
-  String get iconSvg => 'assets/images/icon.svg';
-
-  /// File path: assets/images/logo.svg
-  String get logo => 'assets/images/logo.svg';
+  AssetGenImage get icon => const AssetGenImage('assets/images/icon.png');
 
   /// List of all assets
-  List<dynamic> get values => [google, iconPng, iconSvg, logo];
+  List<AssetGenImage> get values => [icon];
 }
 
 class Assets {
   const Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 
