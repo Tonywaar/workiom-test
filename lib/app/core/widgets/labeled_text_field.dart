@@ -81,6 +81,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 cursorColor: TColors.primary,
                 focusNode: widget.focusNode,
                 textInputAction: widget.textInputAction,
+                onTapOutside: (event) => FocusScope.of(context).unfocus(),
                 onFieldSubmitted: (value) {
                   if (widget.textInputAction == TextInputAction.next) {
                     FocusScope.of(context).requestFocus(widget.nextFocusNode);
@@ -116,7 +117,9 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                               ),
                             )
                           : null),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 5.w).copyWith(top: 15.h),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 5.w,
+                  ).copyWith(top: widget.isPassword ? 0 : 15.h),
                   hintStyle: Theme.of(
                     context,
                   ).textTheme.bodyMedium!.copyWith(color: TColors.textGrey, fontSize: 13.sp),
