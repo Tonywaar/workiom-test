@@ -1,11 +1,7 @@
 import 'package:dio/dio.dart';
-import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-
-import '../../data/data_service.dart';
-import '../services/user_service.dart';
-import 'app_functions.dart';
+import 'package:workiom/export.dart';
 
 final injector = GetIt.asNewInstance();
 

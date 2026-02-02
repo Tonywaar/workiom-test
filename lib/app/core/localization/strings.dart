@@ -1,4 +1,3 @@
-
 class TStrings {
   //shared
   static String stayOrganizedWith = "stayOrganizedWith";

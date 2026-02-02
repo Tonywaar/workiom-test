@@ -1,4 +1,5 @@
 import 'package:workiom/app/core/localization/strings.dart';
+
 Map<String, String> ar = {
   //shared
   TStrings.stayOrganizedWith: "حافظ على تنظيمك مع",

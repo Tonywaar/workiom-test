@@ -1,6 +1,4 @@
-import 'package:get/get.dart';
-
-import '../utils/cache_helper.dart';
+import 'package:workiom/export.dart';
 
 class UserService extends GetxService {
   static UserService get instance => Get.find<UserService>();

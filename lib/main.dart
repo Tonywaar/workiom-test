@@ -1,15 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:workiom/export.dart';
 
 import 'app/core/localization/translations.dart';
-import 'app/core/theme/theme.dart';
-import 'app/core/utils/app_functions.dart';
-import 'app/core/utils/cache_helper.dart';
-import 'app/core/utils/injector.dart';
-import 'app/routes/app_pages.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

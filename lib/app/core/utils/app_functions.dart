@@ -1,9 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:get/get.dart';
-
-import 'colors.dart';
+import 'package:workiom/export.dart';
 
 class AppFunctions {
   static void print(object) {
@@ -12,7 +7,7 @@ class AppFunctions {
     }
   }
 
-  static customToast({required String message, bool isError = true}) {
+  static void customToast({required String message, bool isError = true}) {
     Fluttertoast.showToast(
       msg: message.tr,
       toastLength: Toast.LENGTH_SHORT,

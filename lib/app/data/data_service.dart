@@ -1,12 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart' as dio;
-import 'package:get/get.dart';
-import 'package:workiom/app/routes/app_pages.dart';
-
-import '../core/services/user_service.dart';
-import 'data_consts.dart';
-import 'data_state.dart';
+import 'package:workiom/export.dart';
 
 class DataService {
   final dio.Dio _dio;
@@ -92,7 +87,6 @@ class DataService {
         final object = fromJson(response.data);
         return DataSuccess(object as T);
       } else if (response.statusCode == HttpStatus.unauthorized) {
-
         if (UserService.instance.isAuthenticated) {
           UserService.instance.clearUserData();
           Get.offAllNamed(Routes.HOME);

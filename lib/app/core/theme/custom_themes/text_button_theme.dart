@@ -1,7 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../utils/colors.dart';
+import 'package:workiom/export.dart';
 
 class TTextButtonTheme {
   TTextButtonTheme._();
