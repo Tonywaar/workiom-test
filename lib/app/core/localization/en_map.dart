@@ -4,10 +4,10 @@ Map<String, String> en = {
   //shared
   TStrings.stayOrganizedWith: "Stay organized with",
   TStrings.workiom: "Workiom",
+  TStrings.screenTitleDesc: "Let's start an amazing journey! 👋🏻",
 
   //start screen
   TStrings.startScreenTitle: "Create your free account",
-  TStrings.startScreenTitleDesc: "Let's start an amazing journey! 👋🏻",
   TStrings.continueWithGoogle: "Continue with Google",
   TStrings.or: "Or",
   TStrings.continueWithEmail: "Continue with email",

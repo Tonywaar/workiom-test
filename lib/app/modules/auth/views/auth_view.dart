@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
+import 'package:workiom/app/core/widgets/app_title.dart';
+import 'package:workiom/app/modules/auth/views/login_view.dart';
 import 'package:workiom/export.dart';
 
 import '../controllers/auth_controller.dart';
@@ -13,10 +15,7 @@ class AuthView extends GetView<AuthController> {
       body: Column(
         crossAxisAlignment: .start,
         children: [
-          100.verticalSpace,
-          Text(TStrings.startScreenTitle.tr, style: Theme.of(context).textTheme.headlineLarge),
-          5.verticalSpace,
-          Text(TStrings.startScreenTitleDesc.tr, style: Theme.of(context).textTheme.titleLarge),
+          AppTitle(title: TStrings.startScreenTitle, description: TStrings.screenTitleDesc),
           Spacer(),
           CustomButton(
             onTap: () {},
@@ -28,7 +27,13 @@ class AuthView extends GetView<AuthController> {
           30.verticalSpace,
           Center(child: Text(TStrings.or.tr)),
           30.verticalSpace,
-          CustomButton(onTap: () {}, title: TStrings.continueWithEmail.tr, withEnter: true),
+          CustomButton(
+            onTap: () {
+              Get.to(() => LoginView(), transition: .leftToRight);
+            },
+            title: TStrings.continueWithEmail.tr,
+            withEnter: true,
+          ),
           25.verticalSpace,
           Center(
             child: RichText(

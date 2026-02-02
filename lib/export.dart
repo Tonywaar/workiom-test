@@ -33,3 +33,4 @@ export 'app/data/data_consts.dart';
 export 'app/data/data_service.dart';
 export 'app/data/data_state.dart';
 export 'app/routes/app_pages.dart';
+export 'app/core/widgets/app_title.dart';

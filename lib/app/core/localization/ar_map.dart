@@ -7,7 +7,7 @@ Map<String, String> ar = {
 
   //start screen
   TStrings.startScreenTitle: "أنشئ حسابك المجاني",
-  TStrings.startScreenTitleDesc: "لنبدأ رحلة رائعة! 👋🏻",
+  TStrings.screenTitleDesc: "لنبدأ رحلة رائعة! 👋🏻",
   TStrings.continueWithGoogle: "المتابعة باستخدام جوجل",
   TStrings.or: "أو",
   TStrings.continueWithEmail: "المتابعة باستخدام البريد الإلكتروني",

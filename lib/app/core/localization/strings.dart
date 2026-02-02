@@ -2,10 +2,10 @@ class TStrings {
   //shared
   static String stayOrganizedWith = "stayOrganizedWith";
   static String workiom = "workiom";
+  static String screenTitleDesc = "startScreenTitleDesc";
 
   //start screen
   static String startScreenTitle = "startScreenTitle";
-  static String startScreenTitleDesc = "startScreenTitleDesc";
   static String continueWithGoogle = "continueWithGoogle";
   static String or = "or";
   static String continueWithEmail = "continueWithEmail";
