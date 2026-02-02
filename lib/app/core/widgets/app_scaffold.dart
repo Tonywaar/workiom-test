@@ -19,7 +19,7 @@ class AppScaffold extends StatelessWidget {
                   5.horizontalSpace,
                   CustomSvg(Assets.icons.logo),
                 ],
-              ) //
+              )
               .paddingSymmetric(horizontal: 25.w)
               .paddingOnly(bottom: MediaQuery.of(context).viewPadding.bottom + 25.h),
     );

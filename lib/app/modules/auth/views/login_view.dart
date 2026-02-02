@@ -40,6 +40,81 @@ class LoginView extends GetView {
                     prefix: CustomSvg(Assets.icons.lock),
                     controller: TextEditingController(),
                   ),
+                  25.verticalSpace,
+                  Container(
+                    width: Get.width,
+                    height: 10,
+                    decoration: BoxDecoration(
+                      color: TColors.greyColor.withValues(alpha: .25),
+                      borderRadius: BorderRadius.circular(18.r),
+                    ),
+                    alignment: AlignmentDirectional.centerStart,
+                    child: FractionallySizedBox(
+                      widthFactor: .5,
+                      child: Container(
+                        width: Get.width,
+                        height: Get.height,
+                        decoration: BoxDecoration(
+                          color: TColors.yellowColor,
+                          borderRadius: BorderRadius.circular(18.r),
+                        ),
+                      ),
+                    ),
+                  ),
+                  25.verticalSpace,
+                  Row(
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    children: [
+                      CustomSvg(Assets.icons.warning),
+                      5.horizontalSpace,
+                      Expanded(
+                        child: Text(
+                          TStrings.notStrongEnough.tr,
+                          style: Theme.of(
+                            context,
+                          ).textTheme.titleMedium?.copyWith(fontWeight: .w500),
+                        ),
+                      ),
+                    ],
+                  ),
+                  5.verticalSpace,
+                  Row(
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    children: [
+                      CustomSvg(Assets.icons.wrong),
+                      5.horizontalSpace,
+                      Expanded(
+                        child: Text(
+                          "${TStrings.passwordMustHave.tr} ${TStrings.sevenChar.tr}",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  5.verticalSpace,
+                  Row(
+                    mainAxisAlignment: .start,
+                    crossAxisAlignment: .center,
+                    children: [
+                      CustomSvg(Assets.icons.right),
+                      5.horizontalSpace,
+                      Expanded(
+                        child: Text(
+                          "${TStrings.passwordMustHave.tr} ${TStrings.oneUpper.tr}",
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                  25.verticalSpace,
+                  CustomButton(
+                    color: TColors.greyColor,
+                    withEnter: true,
+                    title: TStrings.confirmPassword.tr,
+                    onTap: () {},
+                  ),
                 ],
               ),
             ),
