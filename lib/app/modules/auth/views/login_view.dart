@@ -5,7 +5,9 @@ import 'package:workiom/app/core/widgets/labeled_text_field.dart';
 
 import 'package:workiom/export.dart';
 
-class LoginView extends GetView {
+import '../controllers/auth_controller.dart';
+
+class LoginView extends GetView<AuthController> {
   const LoginView({super.key});
 
   @override
@@ -30,7 +32,7 @@ class LoginView extends GetView {
                       child: Icon(CupertinoIcons.clear_circled),
                     ),
                     prefix: CustomSvg(Assets.icons.message),
-                    controller: TextEditingController(),
+                    controller: controller.emailController,
                   ),
                   25.verticalSpace,
                   LabeledTextField(
@@ -38,7 +40,7 @@ class LoginView extends GetView {
 
                     isPassword: true,
                     prefix: CustomSvg(Assets.icons.lock),
-                    controller: TextEditingController(),
+                    controller: controller.passwordController,
                   ),
                   25.verticalSpace,
                   Container(
