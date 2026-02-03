@@ -69,21 +69,24 @@ class _LoginViewState extends State<LoginView> {
                   }),
 
                   15.verticalSpace,
-                  Obx(() {
-                    bool isVisible =
-                        controller.currentScreen.value == 1 &&
-                        controller.workspaceNameError.value == TStrings.workspaceTaken.tr;
-                    return Visibility(
-                      visible: isVisible,
-                      child: CustomButton(
-                        color: TColors.greenColor,
-                        withEnter: true,
-                        isLoading: controller.requestState.value.isLoading,
-                        title: TStrings.login.tr,
-                        onTap: () => controller.authenticate(withLoading: true),
-                      ),
-                    );
-                  }),
+                  Visibility(
+                    visible: kDebugMode,
+                    child: Obx(() {
+                      bool isVisible =
+                          controller.currentScreen.value == 1 &&
+                          controller.workspaceNameError.value == TStrings.workspaceTaken.tr;
+                      return Visibility(
+                        visible: isVisible,
+                        child: CustomButton(
+                          color: TColors.greenColor,
+                          withEnter: true,
+                          isLoading: controller.requestState.value.isLoading,
+                          title: TStrings.login.tr,
+                          onTap: () => controller.authenticate(withLoading: true),
+                        ),
+                      );
+                    }),
+                  ),
                 ],
               ),
             ),
