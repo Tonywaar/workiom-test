@@ -58,6 +58,10 @@ Map<String, String> ar = {
 
   //home
   TStrings.homeTitle: "شكرًا لاختيارك\nووركيوم",
+  TStrings.logout: "تسجيل الخروج",
+  TStrings.cancel: "إلغاء",
+  TStrings.logoutConfirmationTitle: "تأكيد تسجيل الخروج",
+  TStrings.logoutConfirmationDesc: "هل أنت متأكد أنك تريد تسجيل الخروج؟",
 
   //validationKeys
   TStrings.textRequired: "هذا الحقل اجباري",

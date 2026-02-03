@@ -96,7 +96,7 @@ class AppFunctions {
   static void showErrorDialog({required String title, required String description}) {
     Get.dialog(
       Dialog(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.r + 25.w)),
         child: Padding(
           padding: EdgeInsets.all(25.w),
           child: Column(
@@ -113,6 +113,59 @@ class AppFunctions {
               Text(description, style: Get.textTheme.bodyMedium, textAlign: TextAlign.center),
               25.verticalSpace,
               CustomButton(title: TStrings.ok.tr, onTap: () => Get.back()),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  static void showLogoutDialog({required VoidCallback onConfirm}) {
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.r + 25.w)),
+        child: Padding(
+          padding: EdgeInsets.all(25.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CustomSvg(Assets.icons.warning, width: 60.w, height: 60.w),
+              20.verticalSpace,
+              Text(
+                TStrings.logoutConfirmationTitle.tr,
+                style: Get.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              10.verticalSpace,
+              Text(
+                TStrings.logoutConfirmationDesc.tr,
+                style: Get.textTheme.bodyMedium,
+                textAlign: TextAlign.center,
+              ),
+              25.verticalSpace,
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomButton(
+                      title: TStrings.cancel.tr,
+                      color: TColors.greyColor.withValues(alpha: .25),
+                      textColor: TColors.textGrey,
+                      onTap: () => Get.back(),
+                    ),
+                  ),
+                  15.horizontalSpace,
+                  Expanded(
+                    child: CustomButton(
+                      title: TStrings.logout.tr,
+                      color: TColors.redColor,
+                      onTap: () {
+                        Get.back();
+                        onConfirm();
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),

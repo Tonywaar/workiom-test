@@ -15,8 +15,12 @@ class HomeView extends GetView<HomeController> {
               Spacer(),
               IconButton(
                 onPressed: () {
-                  UserService.instance.clearUserData();
-                  Get.offAllNamed(Routes.SPLASH);
+                  AppFunctions.showLogoutDialog(
+                    onConfirm: () {
+                      UserService.instance.clearUserData();
+                      Get.offAllNamed(Routes.SPLASH);
+                    },
+                  );
                 },
                 icon: Icon(Icons.logout, color: TColors.redColor),
               ),

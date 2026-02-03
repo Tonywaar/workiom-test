@@ -58,6 +58,10 @@ Map<String, String> en = {
 
   //home
   TStrings.homeTitle: "Thank you for choosing\nWorkiom",
+  TStrings.logout: "Logout",
+  TStrings.cancel: "Cancel",
+  TStrings.logoutConfirmationTitle: "Logout Confirmation",
+  TStrings.logoutConfirmationDesc: "Are you sure you want to logout?",
 
   //validationKeys
   TStrings.textRequired: "This field is required",

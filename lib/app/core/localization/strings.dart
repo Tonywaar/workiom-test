@@ -56,6 +56,10 @@ class TStrings {
 
   //home
   static String homeTitle = "homeTitle";
+  static String logout = "logout";
+  static String cancel = "cancel";
+  static String logoutConfirmationTitle = "logoutConfirmationTitle";
+  static String logoutConfirmationDesc = "logoutConfirmationDesc";
 
   //validationKeys
   static String textRequired = "textRequired";
