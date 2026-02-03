@@ -8,24 +8,42 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      body: Center(
-        child: RichText(
-          text: TextSpan(
-            style: Theme.of(context).textTheme.headlineLarge,
-
+      body: Column(
+        children: [
+          Row(
             children: [
-              TextSpan(text: TStrings.homeTitle.tr),
-
-              WidgetSpan(
-                alignment: PlaceholderAlignment.middle,
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 4),
-                  child: SvgPicture.asset(Assets.icons.icon, width: 18, height: 18),
-                ),
+              Spacer(),
+              IconButton(
+                onPressed: () {
+                  UserService.instance.clearUserData();
+                  Get.offAllNamed(Routes.SPLASH);
+                },
+                icon: Icon(Icons.logout, color: TColors.redColor),
               ),
             ],
           ),
-        ),
+          Expanded(
+            child: Center(
+              child: RichText(
+                text: TextSpan(
+                  style: Theme.of(context).textTheme.headlineLarge,
+
+                  children: [
+                    TextSpan(text: TStrings.homeTitle.tr),
+
+                    WidgetSpan(
+                      alignment: PlaceholderAlignment.middle,
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 4),
+                        child: SvgPicture.asset(Assets.icons.icon, width: 18, height: 18),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
