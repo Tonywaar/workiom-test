@@ -111,10 +111,8 @@ class DataService {
         );
         return DataSuccess(finalResponse);
       } else if (response.statusCode == HttpStatus.unauthorized) {
-        if (UserService.instance.isAuthenticated) {
-          UserService.instance.clearUserData();
-          Get.offAllNamed(Routes.HOME);
-        }
+        UserService.instance.clearUserData();
+        Get.offAllNamed(Routes.SPLASH);
       }
     }
     return DataFailed(

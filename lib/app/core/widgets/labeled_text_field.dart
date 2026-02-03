@@ -101,7 +101,9 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 onChanged: (value) {
                   widget.onChanged?.call(value);
                 },
-                autovalidateMode: widget.autoValidateMode ? AutovalidateMode.always : null,
+                autovalidateMode: widget.autoValidateMode
+                    ? AutovalidateMode.onUserInteraction
+                    : null,
                 maxLength: widget.maxLength,
                 textAlign: widget.isCentered ? TextAlign.center : widget.textAlign,
                 textDirection: widget.textDirection,

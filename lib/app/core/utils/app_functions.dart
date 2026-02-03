@@ -1,3 +1,4 @@
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:workiom/export.dart';
 
 class AppFunctions {
@@ -75,5 +76,10 @@ class AppFunctions {
         systemNavigationBarIconBrightness: Brightness.dark,
       ),
     );
+  }
+
+  static Future<String> getIanaTimeZone() async {
+    final timezoneInfo = await FlutterTimezone.getLocalTimezone();
+    return timezoneInfo.identifier;
   }
 }
