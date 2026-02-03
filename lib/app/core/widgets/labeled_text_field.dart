@@ -25,6 +25,7 @@ class LabeledTextField extends StatefulWidget {
     this.textColor,
     this.bgColor,
     this.onFieldSubmitted,
+    this.onChanged,
     this.prefix,
     this.readOnly = false,
     this.colorOfEye,
@@ -50,6 +51,7 @@ class LabeledTextField extends StatefulWidget {
   final FocusNode? nextFocusNode;
   final TextInputAction? textInputAction;
   final Function(String)? onFieldSubmitted;
+  final Function(String)? onChanged;
   final Color? textColor;
   final Color? bgColor;
   final bool readOnly;
@@ -88,6 +90,9 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                     FocusScope.of(context).requestFocus(widget.nextFocusNode);
                   }
                   widget.onFieldSubmitted?.call(value);
+                },
+                onChanged: (value) {
+                  widget.onChanged?.call(value);
                 },
                 maxLength: widget.maxLength,
                 textAlign: widget.isCentered ? TextAlign.center : widget.textAlign,

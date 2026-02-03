@@ -39,6 +39,53 @@ class AuthController extends GetxController {
     }
   }
 
+  String? validatePassword(String? password) {
+    String? validationMessage = AppFunctions.requiredValidator(password);
+    if (validationMessage == null) {
+      return validateToRules(password!);
+    }
+    return validationMessage;
+  }
+
+  String? validateToRules(String password) {
+    passwordSettings.resetPassedVars();
+    countOfPassedRules(0);
+    if (password.length >= (passwordSettings.requiredLength)) {
+      countOfPassedRules.value++;
+      passwordSettings.requiredLengthPassed.value = true;
+    }
+
+    if (passwordSettings.requireDigit) {
+      if (password.contains(RegExp(r'[0-9]'))) {
+        countOfPassedRules.value++;
+        passwordSettings.requireDigitPassed.value = true;
+      }
+    }
+
+    if (passwordSettings.requireLowercase) {
+      if (password.contains(RegExp(r'[a-z]'))) {
+        countOfPassedRules.value++;
+        passwordSettings.requireLowercasePassed.value = true;
+      }
+    }
+
+    if (passwordSettings.requireUppercase) {
+      if (password.contains(RegExp(r'[A-Z]'))) {
+        countOfPassedRules.value++;
+        passwordSettings.requireUppercasePassed.value = true;
+      }
+    }
+
+    if (passwordSettings.requireNonAlphanumeric) {
+      if (password.contains(RegExp(r'[^a-zA-Z0-9]'))) {
+        countOfPassedRules.value++;
+        passwordSettings.requireNonAlphanumericPassed.value = true;
+      }
+    }
+    print(countOfPassedRules.value == numberOfRules ? null : "");
+    return countOfPassedRules.value == numberOfRules ? null : "";
+  }
+
   //api calls
 
   Rx<RequestState> requestState = RequestState.begin.obs;
@@ -46,7 +93,6 @@ class AuthController extends GetxController {
   int selectedEditionId = 0;
 
   late Setting passwordSettings;
-  RxBool isPasswordValid = false.obs;
   int numberOfRules = 5;
   RxInt countOfPassedRules = 0.obs;
 
@@ -68,13 +114,15 @@ class AuthController extends GetxController {
     if (result is DataSuccess<GeneralResponse<PasswordComplexityData>>) {
       passwordSettings = result.data!.result!.setting!;
       numberOfRules = 1;
-      if (passwordSettings.requireDigit ?? false) {
+
+      passwordSettings.resetPassedVars();
+      if (passwordSettings.requireDigit) {
         numberOfRules++;
         passwordSettings.requireDigitPassed.value = false;
       }
-      if (passwordSettings.requireLowercase ?? false) numberOfRules++;
-      if (passwordSettings.requireNonAlphanumeric ?? false) numberOfRules++;
-      if (passwordSettings.requireUppercase ?? false) numberOfRules++;
+      if (passwordSettings.requireLowercase) numberOfRules++;
+      if (passwordSettings.requireNonAlphanumeric) numberOfRules++;
+      if (passwordSettings.requireUppercase) numberOfRules++;
 
       requestState(.success);
       refresh();

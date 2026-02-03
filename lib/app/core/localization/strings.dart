@@ -46,5 +46,5 @@ class TStrings {
 
   //validationKeys
   static String textRequired = "textRequired";
-  static String emailNotValid = "textRequired";
+  static String emailNotValid = "emailNotValid";
 }

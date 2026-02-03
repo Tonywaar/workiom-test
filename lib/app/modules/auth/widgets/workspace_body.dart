@@ -21,6 +21,7 @@ class WorkspaceBody extends StatelessWidget {
           ),
           prefix: CustomSvg(Assets.icons.group),
           controller: controller.workspaceController,
+          validator: AppFunctions.requiredValidator,
         ),
         25.verticalSpace,
         LabeledTextField(
@@ -28,6 +29,7 @@ class WorkspaceBody extends StatelessWidget {
           hint: TStrings.enterFirstName.tr,
           prefix: CustomSvg(Assets.icons.name),
           controller: controller.firstNameController,
+          validator: AppFunctions.requiredValidator,
         ),
 
         25.verticalSpace,
@@ -36,6 +38,7 @@ class WorkspaceBody extends StatelessWidget {
           hint: TStrings.enterLastName.tr,
           prefix: CustomSvg(Assets.icons.name),
           controller: controller.lastNameController,
+          validator: AppFunctions.requiredValidator,
         ),
       ],
     );

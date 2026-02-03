@@ -30,6 +30,8 @@ class LoginBody extends StatelessWidget {
           isPassword: true,
           prefix: CustomSvg(Assets.icons.lock),
           controller: controller.passwordController,
+          validator: controller.validatePassword,
+          onChanged: controller.validateToRules,
         ),
         25.verticalSpace,
 
@@ -66,7 +68,9 @@ class LoginBody extends StatelessWidget {
                   height: Get.height,
                   duration: Duration(milliseconds: 400),
                   decoration: BoxDecoration(
-                    color: TColors.yellowColor,
+                    color: controller.countOfPassedRules.value == controller.numberOfRules
+                        ? TColors.greenColor
+                        : TColors.yellowColor,
                     borderRadius: BorderRadius.circular(18.r),
                   ),
                 ),
@@ -77,12 +81,14 @@ class LoginBody extends StatelessWidget {
                 crossAxisAlignment: .center,
                 children: [
                   CustomSvg(
-                    controller.isPasswordValid.value ? Assets.icons.right : Assets.icons.warning,
+                    controller.countOfPassedRules.value == controller.numberOfRules
+                        ? Assets.icons.right
+                        : Assets.icons.warning,
                   ),
                   5.horizontalSpace,
                   Expanded(
                     child: Text(
-                      controller.isPasswordValid.value
+                      controller.countOfPassedRules.value == controller.numberOfRules
                           ? TStrings.strongPassword.tr
                           : TStrings.notStrongEnough.tr,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: .w500),
@@ -94,31 +100,31 @@ class LoginBody extends StatelessWidget {
               PasswordConditionItem(
                 context: context,
                 title: "${controller.passwordSettings.requiredLength} ${TStrings.sevenChar.tr}",
-                passed: false.obs,
+                passed: controller.passwordSettings.requiredLengthPassed,
               ),
-              if (controller.passwordSettings.requireUppercase ?? false)
+              if (controller.passwordSettings.requireUppercase)
                 PasswordConditionItem(
                   context: context,
                   title: TStrings.oneUpper.tr,
-                  passed: false.obs,
+                  passed: controller.passwordSettings.requireUppercasePassed,
                 ),
-              if (controller.passwordSettings.requireLowercase ?? false)
+              if (controller.passwordSettings.requireLowercase)
                 PasswordConditionItem(
                   context: context,
                   title: TStrings.oneLower.tr,
-                  passed: false.obs,
+                  passed: controller.passwordSettings.requireLowercasePassed,
                 ),
-              if (controller.passwordSettings.requireDigit ?? false)
+              if (controller.passwordSettings.requireDigit)
                 PasswordConditionItem(
                   context: context,
                   title: TStrings.oneNumber.tr,
-                  passed: false.obs,
+                  passed: controller.passwordSettings.requireDigitPassed,
                 ),
-              if (controller.passwordSettings.requireNonAlphanumeric ?? false)
+              if (controller.passwordSettings.requireNonAlphanumeric)
                 PasswordConditionItem(
                   context: context,
                   title: TStrings.oneNonAlphanumeric.tr,
-                  passed: false.obs,
+                  passed: controller.passwordSettings.requireNonAlphanumericPassed,
                 ),
             ],
           );

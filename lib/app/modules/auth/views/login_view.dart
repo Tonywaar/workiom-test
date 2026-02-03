@@ -51,7 +51,11 @@ class _LoginViewState extends State<LoginView> {
                   25.verticalSpace,
                   Obx(() {
                     return CustomButton(
-                      color: TColors.greyColor,
+                      color: controller.currentScreen.value == 0
+                          ? controller.countOfPassedRules.value == controller.numberOfRules
+                                ? TColors.primary
+                                : TColors.greyColor
+                          : TColors.greyColor,
                       withEnter: true,
                       title: controller.buttonTitles[controller.currentScreen.value].tr,
                       onTap: controller.validateAndProceed,

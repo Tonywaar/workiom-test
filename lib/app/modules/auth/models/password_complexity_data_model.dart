@@ -19,31 +19,39 @@ class PasswordComplexityData {
 }
 
 class Setting {
-  bool? requireDigit;
-  RxBool  requireDigitPassed = false.obs;
-  bool? requireLowercase;
-  RxBool  requireLowercasePassed = false.obs;
-  bool? requireNonAlphanumeric;
-  RxBool  requireNonAlphanumericPassed = false.obs;
-  bool? requireUppercase;
-  RxBool  requireUppercasePassed = false.obs;
-  int? requiredLength;
+  bool requireDigit = false;
+  RxBool requireDigitPassed = false.obs;
+  bool requireLowercase = false;
+  RxBool requireLowercasePassed = false.obs;
+  bool requireNonAlphanumeric = false;
+  RxBool requireNonAlphanumericPassed = false.obs;
+  bool requireUppercase = false;
+  RxBool requireUppercasePassed = false.obs;
+  int requiredLength = 0;
   RxBool requiredLengthPassed = false.obs;
 
   Setting({
-    this.requireDigit,
-    this.requireLowercase,
-    this.requireNonAlphanumeric,
-    this.requireUppercase,
-    this.requiredLength,
+    this.requireDigit = false,
+    this.requireLowercase = false,
+    this.requireNonAlphanumeric = false,
+    this.requireUppercase = false,
+    this.requiredLength = 0,
   });
 
   Setting.fromJson(Map<String, dynamic> json) {
-    requireDigit = json['requireDigit'];
-    requireLowercase = json['requireLowercase'];
-    requireNonAlphanumeric = json['requireNonAlphanumeric'];
-    requireUppercase = json['requireUppercase'];
-    requiredLength = json['requiredLength'];
+    requireDigit = json['requireDigit'] ?? false;
+    requireLowercase = json['requireLowercase'] ?? false;
+    requireNonAlphanumeric = json['requireNonAlphanumeric'] ?? false;
+    requireUppercase = json['requireUppercase'] ?? false;
+    requiredLength = json['requiredLength'] ?? 0;
+  }
+
+  void resetPassedVars() {
+    requireDigitPassed = false.obs;
+    requireLowercasePassed = false.obs;
+    requireNonAlphanumericPassed = false.obs;
+    requireUppercasePassed = false.obs;
+    requiredLengthPassed = false.obs;
   }
 
   Map<String, dynamic> toJson() {
