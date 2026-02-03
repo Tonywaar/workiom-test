@@ -52,7 +52,7 @@ class AuthController extends GetxController {
         return;
       }
 
-      await checkTenantName(workspaceController.text);
+      await checkTenantName(workspaceController.text, showMessage: true);
 
       if (workspaceNameError.value != TStrings.workspaceAvailable.tr) {
         requestState(.error);
@@ -168,7 +168,7 @@ class AuthController extends GetxController {
 
   Rx<String> workspaceNameError = "".obs;
 
-  Future<void> checkTenantName(String name) async {
+  Future<void> checkTenantName(String name, {bool showMessage = false}) async {
     workspaceNameError.value = AppFunctions.workspaceValidator(name) ?? "";
 
     if (workspaceNameError.value.isEmpty) {
@@ -181,6 +181,12 @@ class AuthController extends GetxController {
         } else {
           workspaceNameError.value = TStrings.workspaceTaken.tr;
           checkNameRequestState(.error);
+          if (showMessage) {
+            AppFunctions.showErrorDialog(
+              title: TStrings.tenantAvailabilityError,
+              description: TStrings.workspaceTaken.tr,
+            );
+          }
         }
       } else {
         checkNameRequestState(.error);
@@ -242,7 +248,12 @@ class AuthController extends GetxController {
     if (result is DataSuccess<GeneralResponse<AuthenticateData>>) {
       if (result.data?.result?.accessToken != null) {
         cache.write(CacheHelper.token, result.data?.result?.accessToken);
-        Get.offAllNamed(Routes.SPLASH);
+
+        bool loggedIn = await UserService.instance.getLoginInfo();
+
+        if (loggedIn) {
+          Get.offAllNamed(Routes.HOME);
+        }
       }
     } else {
       requestState(.error);

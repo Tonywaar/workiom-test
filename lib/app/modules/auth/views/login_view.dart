@@ -24,9 +24,12 @@ class _LoginViewState extends State<LoginView> {
             return AppTitle(
               title: controller.screenTitles[controller.currentScreen.value],
               description: TStrings.screenTitleDesc,
+              customBackFunction: () {
+                if (controller.currentScreen.value == 0) Get.back();
+                controller.currentScreen.value = 0;
+              },
             );
           }),
-          // IconButton(onPressed: controller.authenticate, icon: Icon(Icons.bug_report)),
           Expanded(
             child: SingleChildScrollView(
               child: Column(
@@ -62,6 +65,23 @@ class _LoginViewState extends State<LoginView> {
                       isLoading: controller.requestState.value.isLoading,
                       title: controller.buttonTitles[controller.currentScreen.value].tr,
                       onTap: controller.validateAndProceed,
+                    );
+                  }),
+
+                  15.verticalSpace,
+                  Obx(() {
+                    bool isVisible =
+                        controller.currentScreen.value == 1 &&
+                        controller.workspaceNameError.value == TStrings.workspaceTaken.tr;
+                    return Visibility(
+                      visible: isVisible,
+                      child: CustomButton(
+                        color: TColors.greenColor,
+                        withEnter: true,
+                        isLoading: controller.requestState.value.isLoading,
+                        title: TStrings.login.tr,
+                        onTap: controller.authenticate,
+                      ),
                     );
                   }),
                 ],

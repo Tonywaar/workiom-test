@@ -30,6 +30,7 @@ class LabeledTextField extends StatefulWidget {
     this.prefix,
     this.readOnly = false,
     this.autoValidateMode = false,
+    this.isLTR = false,
     this.colorOfEye,
   });
 
@@ -40,6 +41,7 @@ class LabeledTextField extends StatefulWidget {
   final String hint;
   final double? svgSize;
   final TextAlign textAlign;
+  final bool isLTR;
   final TextDirection? textDirection;
   final bool isCentered;
   final TextEditingController controller;
@@ -74,96 +76,85 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(widget.label, style: Theme.of(context).textTheme.titleMedium),
-
         Row(
           crossAxisAlignment: .center,
           children: [
             if (widget.prefix != null) ...[widget.prefix!, 10.horizontalSpace],
-            Expanded(
-              child: TextFormField(
-                textAlignVertical: widget.isPassword
-                    ? TextAlignVertical.center
-                    : TextAlignVertical.top,
-                controller: widget.controller,
-                cursorColor: TColors.primary,
-                focusNode: widget.focusNode,
-                textInputAction: widget.textInputAction,
-                onTapOutside: (event) {
-                  widget.onTapOutside?.call();
-                  FocusScope.of(context).unfocus();
-                },
-                onFieldSubmitted: (value) {
-                  if (widget.textInputAction == TextInputAction.next) {
-                    FocusScope.of(context).requestFocus(widget.nextFocusNode);
-                  }
-                  widget.onFieldSubmitted?.call(value);
-                },
-                onChanged: (value) {
-                  widget.onChanged?.call(value);
-                },
-                autovalidateMode: widget.autoValidateMode
-                    ? AutovalidateMode.onUserInteraction
-                    : null,
-                maxLength: widget.maxLength,
-                textAlign: widget.isCentered ? TextAlign.center : widget.textAlign,
-                textDirection: widget.textDirection,
-                validator: widget.validator,
-                keyboardType:
-                    widget.keyboardType ?? (widget.isNumber ? TextInputType.number : null),
-                readOnly: widget.readOnly,
-                inputFormatters: [
-                  if (widget.isNumber) FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
-                ],
-                decoration: InputDecoration(
-                  filled: false,
-                  hintTextDirection: widget.textDirection,
-                  hintText: widget.hint,
-                  counterText: '',
-                  suffix:
-                      widget.suffixIcon ??
-                      (widget.isPassword
-                          ? IconButton(
-                              onPressed: () {
-                                isVisible = !isVisible;
-                                setState(() {});
-                              },
-                              icon: Icon(
-                                !isVisible ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
-                                color: widget.colorOfEye,
-                              ),
-                            )
-                          : SizedBox.shrink()),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
-                  //.copyWith(top: widget.isPassword || widget.prefix != null ? 0 : 15.h),
-                  hintStyle: Theme.of(context).textTheme.bodyMedium,
-                  errorStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: TColors.redColor,
-                    fontSize: 12.sp,
-                    height: 0,
-                  ),
-                  errorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TColors.redColor),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TColors.primary),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TColors.greyColor),
-                  ),
-                  focusedErrorBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TColors.redColor),
-                  ),
-                  disabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(color: TColors.greyColor),
-                  ),
-                ),
-                obscureText: widget.isPassword && !isVisible,
-                style: TextStyle(letterSpacing: 1.15, fontSize: 18.sp),
-              ),
-            ),
+            if (widget.isLTR)
+              Directionality(textDirection: .ltr, child: customTextField())
+            else
+              customTextField(),
           ],
         ),
       ],
+    );
+  }
+
+  Widget customTextField() {
+    return Expanded(
+      child: TextFormField(
+        textAlignVertical: widget.isPassword ? TextAlignVertical.center : TextAlignVertical.top,
+        controller: widget.controller,
+        cursorColor: TColors.primary,
+        focusNode: widget.focusNode,
+        textInputAction: widget.textInputAction,
+        onTapOutside: (event) {
+          widget.onTapOutside?.call();
+          FocusScope.of(context).unfocus();
+        },
+        onFieldSubmitted: (value) {
+          if (widget.textInputAction == TextInputAction.next) {
+            FocusScope.of(context).requestFocus(widget.nextFocusNode);
+          }
+          widget.onFieldSubmitted?.call(value);
+        },
+        onChanged: (value) {
+          widget.onChanged?.call(value);
+        },
+        autovalidateMode: widget.autoValidateMode ? AutovalidateMode.onUserInteraction : null,
+        maxLength: widget.maxLength,
+        textAlign: widget.isCentered ? TextAlign.center : widget.textAlign,
+        textDirection: widget.textDirection,
+        validator: widget.validator,
+        keyboardType: widget.keyboardType ?? (widget.isNumber ? TextInputType.number : null),
+        readOnly: widget.readOnly,
+        inputFormatters: [
+          if (widget.isNumber) FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+        ],
+        decoration: InputDecoration(
+          filled: false,
+          hintTextDirection: widget.textDirection,
+          hintText: widget.hint,
+          counterText: '',
+          suffix:
+              widget.suffixIcon ??
+              (widget.isPassword
+                  ? IconButton(
+                      onPressed: () {
+                        isVisible = !isVisible;
+                        setState(() {});
+                      },
+                      icon: Icon(
+                        !isVisible ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
+                        color: widget.colorOfEye,
+                      ),
+                    )
+                  : SizedBox.shrink()),
+          contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
+          //.copyWith(top: widget.isPassword || widget.prefix != null ? 0 : 15.h),
+          hintStyle: Theme.of(context).textTheme.bodyMedium,
+          errorStyle: Theme.of(
+            context,
+          ).textTheme.bodySmall!.copyWith(color: TColors.redColor, fontSize: 12.sp, height: 0),
+          errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: TColors.redColor)),
+          focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: TColors.primary)),
+          enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: TColors.greyColor)),
+          focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: TColors.redColor)),
+          disabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: TColors.greyColor)),
+        ),
+        obscureText: widget.isPassword && !isVisible,
+        style: TextStyle(letterSpacing: 1.15, fontSize: 18.sp),
+      ),
     );
   }
 }

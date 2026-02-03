@@ -14,6 +14,7 @@ class WorkspaceBody extends StatelessWidget {
         LabeledTextField(
           label: TStrings.yourCompanyName.tr,
           hint: "Workspace*",
+          isLTR: true,
           suffixIcon: Padding(
             padding: EdgeInsets.only(top: 15.h),
             child: Text(".workiom.com"),

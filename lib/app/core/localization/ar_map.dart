@@ -4,11 +4,13 @@ Map<String, String> ar = {
   //shared
   TStrings.stayOrganizedWith: "حافظ على تنظيمك مع",
   TStrings.workiom: "وركيوم",
+
+  //error messages
   TStrings.somethingWentWrong: "حدث خطأ، اعادة التحميل",
   TStrings.ok: "حسناً",
   TStrings.editionsError: "خطأ في النسخ",
   TStrings.passwordSettingsError: "خطأ في إعدادات كلمة المرور",
-  TStrings.tenantAvailabilityError: "خطأ في توفر المستأجر",
+  TStrings.tenantAvailabilityError: "خطأ في توفر اسم مساحة العمل",
   TStrings.registrationError: "خطأ في التسجيل",
   TStrings.authenticationError: "خطأ في المصادقة",
   TStrings.failedToLoadEditions: "فشل في تحميل النسخ",
@@ -35,6 +37,7 @@ Map<String, String> ar = {
   //login
   TStrings.loginTitle: "أدخل كلمة مرور قوية",
   TStrings.yourWorkEmail: "بريد العمل الإلكتروني",
+  TStrings.login: "تسجيل الدخول",
   TStrings.yourPassword: "كلمة المرور",
   TStrings.notStrongEnough: "غير قوية بما يكفي",
   TStrings.strongPassword: "كلمة مرور قوية",

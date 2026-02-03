@@ -2,6 +2,8 @@ class TStrings {
   //shared
   static String stayOrganizedWith = "stayOrganizedWith";
   static String workiom = "workiom";
+
+  //error messages
   static String screenTitleDesc = "startScreenTitleDesc";
   static String somethingWentWrong = "somethingWentWrong";
   static String ok = "ok";
@@ -33,6 +35,7 @@ class TStrings {
   //login
   static String loginTitle = "loginTitle";
   static String yourWorkEmail = "yourWorkEmail";
+  static String login = "login";
   static String yourPassword = "yourPassword";
   static String notStrongEnough = "notStrongEnough";
   static String strongPassword = "strongPassword";

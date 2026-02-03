@@ -4,6 +4,8 @@ Map<String, String> en = {
   //shared
   TStrings.stayOrganizedWith: "Stay organized with",
   TStrings.workiom: "Workiom",
+
+  //error messages
   TStrings.screenTitleDesc: "Let's start an amazing journey! 👋🏻",
   TStrings.somethingWentWrong: "Something went wrong, Retry",
   TStrings.ok: "OK",
@@ -35,6 +37,7 @@ Map<String, String> en = {
   //login
   TStrings.loginTitle: "Enter a strong password",
   TStrings.yourWorkEmail: "Your work email",
+  TStrings.login: "Login",
   TStrings.yourPassword: "Your password",
   TStrings.notStrongEnough: "Not Strong Enough",
   TStrings.strongPassword: "Strong Password",

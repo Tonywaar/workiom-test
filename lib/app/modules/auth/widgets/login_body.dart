@@ -16,6 +16,7 @@ class LoginBody extends StatelessWidget {
         LabeledTextField(
           label: TStrings.yourWorkEmail.tr,
           hint: "example@email.com",
+          isLTR: true,
           suffixIcon: IconButton(
             onPressed: () => controller.emailController.clear(),
             icon: Icon(CupertinoIcons.clear_circled),
@@ -30,6 +31,7 @@ class LoginBody extends StatelessWidget {
         LabeledTextField(
           label: TStrings.yourPassword.tr,
           hint: "**************",
+          isLTR: true,
           isPassword: true,
           prefix: CustomSvg(Assets.icons.lock),
           controller: controller.passwordController,

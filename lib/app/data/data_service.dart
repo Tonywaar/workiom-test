@@ -120,10 +120,11 @@ class DataService {
             ),
           );
         }
-      } else if (response.statusCode == HttpStatus.unauthorized) {
-        UserService.instance.clearUserData();
-        Get.offAllNamed(Routes.SPLASH);
       }
+      // else if (response.statusCode == HttpStatus.unauthorized) {
+      //   UserService.instance.clearUserData();
+      //   Get.offAllNamed(Routes.SPLASH);
+      // }
     }
     var general = GeneralResponse<Map<String, dynamic>>.fromJson(response?.data);
 

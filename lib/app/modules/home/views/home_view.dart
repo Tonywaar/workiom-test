@@ -14,14 +14,7 @@ class HomeView extends GetView<HomeController> {
             children: [
               Spacer(),
               IconButton(
-                onPressed: () {
-                  AppFunctions.showLogoutDialog(
-                    onConfirm: () {
-                      UserService.instance.clearUserData();
-                      Get.offAllNamed(Routes.SPLASH);
-                    },
-                  );
-                },
+                onPressed: () => controller.logout(),
                 icon: Icon(Icons.logout, color: TColors.redColor),
               ),
             ],

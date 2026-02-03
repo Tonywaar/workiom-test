@@ -3,8 +3,14 @@ import 'package:workiom/export.dart';
 
 class AppTitle extends StatelessWidget {
   final String title, description;
+  final VoidCallback? customBackFunction;
 
-  const AppTitle({super.key, required this.title, required this.description});
+  const AppTitle({
+    super.key,
+    required this.title,
+    required this.description,
+    this.customBackFunction,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +23,13 @@ class AppTitle extends StatelessWidget {
               if (Navigator.canPop(context)) ...[
                 15.verticalSpace,
                 GestureDetector(
-                  onTap: () => Get.back(),
+                  onTap: () {
+                    if (customBackFunction != null) {
+                      customBackFunction?.call();
+                    } else {
+                      Get.back();
+                    }
+                  },
                   child: Icon(CupertinoIcons.back, color: TColors.primary, size: 30),
                 ),
                 50.verticalSpace,
