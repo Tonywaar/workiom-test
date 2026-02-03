@@ -8,7 +8,7 @@ class DataService {
 
   DataService(this._dio);
 
-  Future<DataState<T>> getData<T>({
+  Future<DataState<GeneralResponse<T>>> getData<T>({
     required String endPoint,
     Map<String, dynamic>? queryParameters,
     required Function(Map<String, dynamic>) fromJson,
@@ -25,7 +25,7 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> postData<T>({
+  Future<DataState<GeneralResponse<T>>> postData<T>({
     dynamic data,
     required String endPoint,
     required Function(Map<String, dynamic>) fromJson,
@@ -42,7 +42,7 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> postFormData<T>({
+  Future<DataState<GeneralResponse<T>>> postFormData<T>({
     required dio.FormData formData,
     required String endPoint,
     required Function(Map<String, dynamic>) fromJson,
@@ -59,7 +59,7 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> deleteData<T>({
+  Future<DataState<GeneralResponse<T>>> deleteData<T>({
     dynamic data,
     required String endPoint,
     required Function(Map<String, dynamic>) fromJson,
@@ -76,7 +76,7 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> putData<T>({
+  Future<DataState<GeneralResponse<T>>> putData<T>({
     dynamic data,
     required String endPoint,
     required Function(Map<String, dynamic>) fromJson,
@@ -93,14 +93,23 @@ class DataService {
     }
   }
 
-  Future<DataState<T>> handleDataState<T>({
+  Future<DataState<GeneralResponse<T>>> handleDataState<T>({
     required dio.Response? response,
     required Function(Map<String, dynamic>) fromJson,
   }) async {
     if (response != null) {
       if (response.statusCode == HttpStatus.ok || response.statusCode == HttpStatus.created) {
-        final object = fromJson(response.data);
-        return DataSuccess(object as T);
+        var general = GeneralResponse<Map<String, dynamic>>.fromJson(response.data);
+        var result = fromJson(general.result ?? {});
+        final finalResponse = GeneralResponse<T>(
+          bAbp: general.bAbp,
+          error: general.error,
+          result: result,
+          success: general.success,
+          targetUrl: general.targetUrl,
+          unAuthorizedRequest: general.unAuthorizedRequest,
+        );
+        return DataSuccess(finalResponse);
       } else if (response.statusCode == HttpStatus.unauthorized) {
         if (UserService.instance.isAuthenticated) {
           UserService.instance.clearUserData();
