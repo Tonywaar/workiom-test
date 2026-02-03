@@ -70,6 +70,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
         Text(widget.label, style: Theme.of(context).textTheme.titleMedium),
 
         Row(
+          crossAxisAlignment: .center,
           children: [
             if (widget.prefix != null) ...[widget.prefix!, 10.horizontalSpace],
             Expanded(
@@ -103,7 +104,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                   hintTextDirection: widget.textDirection,
                   hintText: widget.hint,
                   counterText: '',
-                  suffixIcon:
+                  suffix:
                       widget.suffixIcon ??
                       (widget.isPassword
                           ? IconButton(
@@ -116,14 +117,15 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                                 color: widget.colorOfEye,
                               ),
                             )
-                          : null),
-                  // contentPadding: EdgeInsets.symmetric(
-                  //   horizontal: 5.w,
-                  // ).copyWith(top: widget.isPassword || widget.prefix != null ? 0 : 15.h),
+                          : SizedBox.shrink()),
+                  contentPadding: EdgeInsets.symmetric(horizontal: 5.w),
+                  //.copyWith(top: widget.isPassword || widget.prefix != null ? 0 : 15.h),
                   hintStyle: Theme.of(context).textTheme.bodyMedium,
-                  errorStyle: Theme.of(
-                    context,
-                  ).textTheme.bodySmall!.copyWith(color: TColors.redColor, fontSize: 12.sp),
+                  errorStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: TColors.redColor,
+                    fontSize: 12.sp,
+                    height: 0,
+                  ),
                   errorBorder: UnderlineInputBorder(
                     borderSide: BorderSide(color: TColors.redColor),
                   ),
@@ -141,7 +143,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                   ),
                 ),
                 obscureText: widget.isPassword && !isVisible,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(height: 2.5),
+                style: TextStyle(letterSpacing: 1.15, fontSize: 18.sp),
               ),
             ),
           ],
