@@ -2,7 +2,7 @@ class GeneralResponse<T> {
   T? result;
   dynamic targetUrl;
   bool? success;
-  dynamic error;
+  ErrorData? error;
   bool? unAuthorizedRequest;
   bool? bAbp;
 
@@ -19,7 +19,7 @@ class GeneralResponse<T> {
     result = json['result'];
     targetUrl = json['targetUrl'];
     success = json['success'];
-    error = json['error'];
+    error = json['error'] != null ? ErrorData.fromJson(json['error']) : null;
     unAuthorizedRequest = json['unAuthorizedRequest'];
     bAbp = json['__abp'];
   }
@@ -33,5 +33,19 @@ class GeneralResponse<T> {
     data['unAuthorizedRequest'] = unAuthorizedRequest;
     data['__abp'] = bAbp;
     return data;
+  }
+}
+
+class ErrorData {
+  int? code;
+  String? message;
+  String? details;
+
+  ErrorData({this.code, this.message, this.details});
+
+  ErrorData.fromJson(Map<String, dynamic> json) {
+    code = json['code'];
+    message = json['message'];
+    details = json['details'];
   }
 }

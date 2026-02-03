@@ -4,6 +4,19 @@ class TStrings {
   static String workiom = "workiom";
   static String screenTitleDesc = "startScreenTitleDesc";
   static String somethingWentWrong = "somethingWentWrong";
+  static String ok = "ok";
+  static String editionsError = "editionsError";
+  static String passwordSettingsError = "passwordSettingsError";
+  static String tenantAvailabilityError = "tenantAvailabilityError";
+  static String registrationError = "registrationError";
+  static String authenticationError = "authenticationError";
+  static String failedToLoadEditions = "failedToLoadEditions";
+  static String failedToLoadPasswordSettings = "failedToLoadPasswordSettings";
+  static String failedToCheckTenantAvailability = "failedToCheckTenantAvailability";
+  static String failedToRegisterTenant = "failedToRegisterTenant";
+  static String failedToAuthenticate = "failedToAuthenticate";
+  static String loginInfoError = "loginInfoError";
+  static String failedToLoadLoginInfo = "failedToLoadLoginInfo";
 
   //start screen
   static String startScreenTitle = "startScreenTitle";
@@ -46,6 +59,7 @@ class TStrings {
 
   //validationKeys
   static String textRequired = "textRequired";
+  static String nameNotValid = "nameNotValid";
   static String emailNotValid = "emailNotValid";
   static String workspaceNameNotValid = "workspaceNameNotValid";
   static String workspaceTaken = "workspaceTaken";

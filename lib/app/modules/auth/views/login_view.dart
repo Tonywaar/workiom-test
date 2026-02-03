@@ -26,7 +26,7 @@ class _LoginViewState extends State<LoginView> {
               description: TStrings.screenTitleDesc,
             );
           }),
-
+          // IconButton(onPressed: controller.authenticate, icon: Icon(Icons.bug_report)),
           Expanded(
             child: SingleChildScrollView(
               child: Column(

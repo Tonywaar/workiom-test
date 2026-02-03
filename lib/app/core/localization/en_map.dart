@@ -6,6 +6,19 @@ Map<String, String> en = {
   TStrings.workiom: "Workiom",
   TStrings.screenTitleDesc: "Let's start an amazing journey! 👋🏻",
   TStrings.somethingWentWrong: "Something went wrong, Retry",
+  TStrings.ok: "OK",
+  TStrings.editionsError: "Editions Error",
+  TStrings.passwordSettingsError: "Password Settings Error",
+  TStrings.tenantAvailabilityError: "Tenant Availability Error",
+  TStrings.registrationError: "Registration Error",
+  TStrings.authenticationError: "Authentication Error",
+  TStrings.failedToLoadEditions: "Failed to load editions",
+  TStrings.failedToLoadPasswordSettings: "Failed to load password settings",
+  TStrings.failedToCheckTenantAvailability: "Failed to check tenant availability",
+  TStrings.failedToRegisterTenant: "Failed to register tenant",
+  TStrings.failedToAuthenticate: "Failed to authenticate",
+  TStrings.loginInfoError: "Login Information Error",
+  TStrings.failedToLoadLoginInfo: "Failed to load login information",
 
   //start screen
   TStrings.startScreenTitle: "Create your free account",
@@ -49,6 +62,7 @@ Map<String, String> en = {
   //validationKeys
   TStrings.textRequired: "This field is required",
   TStrings.emailNotValid: "Invalid email address",
+  TStrings.nameNotValid: "Invalid name",
   TStrings.workspaceNameNotValid: "Workspace or team name is not valid",
   TStrings.workspaceTaken: "Workspace or team name is taken already",
   TStrings.workspaceAvailable: "Workspace or team name is available",

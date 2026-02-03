@@ -131,6 +131,11 @@ class AuthController extends GetxController {
       if (firstEdition != null) {
         selectedEditionId = firstEdition.edition?.id ?? 0;
       }
+    } else {
+      AppFunctions.showErrorDialog(
+        title: TStrings.editionsError,
+        description: result.error?.data?.toString() ?? TStrings.failedToLoadEditions.tr,
+      );
     }
   }
 
@@ -154,6 +159,10 @@ class AuthController extends GetxController {
       refresh();
     } else {
       getRulesRequestState(.error);
+      AppFunctions.showErrorDialog(
+        title: TStrings.passwordSettingsError,
+        description: result.error?.data?.toString() ?? TStrings.failedToLoadPasswordSettings.tr,
+      );
     }
   }
 
@@ -175,6 +184,11 @@ class AuthController extends GetxController {
         }
       } else {
         checkNameRequestState(.error);
+        AppFunctions.showErrorDialog(
+          title: TStrings.tenantAvailabilityError,
+          description:
+              result.error?.data?.toString() ?? TStrings.failedToCheckTenantAvailability.tr,
+        );
       }
     } else {
       if (workspaceNameError.value == TStrings.textRequired.tr) {
@@ -202,7 +216,13 @@ class AuthController extends GetxController {
       if (result.data?.result?.tenantId != null) {
         authenticate();
       }
-    } else {}
+    } else {
+      requestState(.error);
+      AppFunctions.showErrorDialog(
+        title: TStrings.registrationError,
+        description: result.error?.data?.toString() ?? TStrings.failedToRegisterTenant.tr,
+      );
+    }
   }
 
   Future<void> authenticate() async {
@@ -224,6 +244,12 @@ class AuthController extends GetxController {
         cache.write(CacheHelper.token, result.data?.result?.accessToken);
         Get.offAllNamed(Routes.SPLASH);
       }
-    } else {}
+    } else {
+      requestState(.error);
+      AppFunctions.showErrorDialog(
+        title: TStrings.authenticationError,
+        description: result.error?.data?.toString() ?? TStrings.failedToAuthenticate.tr,
+      );
+    }
   }
 }

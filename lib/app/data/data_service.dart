@@ -99,25 +99,37 @@ class DataService {
   }) async {
     if (response != null) {
       if (response.statusCode == HttpStatus.ok || response.statusCode == HttpStatus.created) {
-        var general = GeneralResponse<Map<String, dynamic>>.fromJson(response.data);
-        var result = fromJson(general.result ?? {});
-        final finalResponse = GeneralResponse<T>(
-          bAbp: general.bAbp,
-          error: general.error,
-          result: result,
-          success: general.success,
-          targetUrl: general.targetUrl,
-          unAuthorizedRequest: general.unAuthorizedRequest,
-        );
-        return DataSuccess(finalResponse);
+        try {
+          var general = GeneralResponse<Map<String, dynamic>>.fromJson(response.data);
+          var result = fromJson(general.result ?? {});
+          final finalResponse = GeneralResponse<T>(
+            bAbp: general.bAbp,
+            error: general.error,
+            result: result,
+            success: general.success,
+            targetUrl: general.targetUrl,
+            unAuthorizedRequest: general.unAuthorizedRequest,
+          );
+          return DataSuccess(finalResponse);
+        } catch (e) {
+          return DataFailed(
+            dio.Response(
+              data: 'unknown error',
+              statusCode: 500,
+              requestOptions: dio.RequestOptions(),
+            ),
+          );
+        }
       } else if (response.statusCode == HttpStatus.unauthorized) {
         UserService.instance.clearUserData();
         Get.offAllNamed(Routes.SPLASH);
       }
     }
+    var general = GeneralResponse<Map<String, dynamic>>.fromJson(response?.data);
+
     return DataFailed(
       dio.Response(
-        data: response?.data['error'] ?? response?.data['message'] ?? 'unknown error',
+        data: general.error?.message ?? 'unknown error',
         statusCode: response?.statusCode,
         requestOptions: response?.requestOptions ?? dio.RequestOptions(),
       ),

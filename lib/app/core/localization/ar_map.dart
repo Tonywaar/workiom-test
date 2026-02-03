@@ -5,6 +5,19 @@ Map<String, String> ar = {
   TStrings.stayOrganizedWith: "حافظ على تنظيمك مع",
   TStrings.workiom: "وركيوم",
   TStrings.somethingWentWrong: "حدث خطأ، اعادة التحميل",
+  TStrings.ok: "حسناً",
+  TStrings.editionsError: "خطأ في النسخ",
+  TStrings.passwordSettingsError: "خطأ في إعدادات كلمة المرور",
+  TStrings.tenantAvailabilityError: "خطأ في توفر المستأجر",
+  TStrings.registrationError: "خطأ في التسجيل",
+  TStrings.authenticationError: "خطأ في المصادقة",
+  TStrings.failedToLoadEditions: "فشل في تحميل النسخ",
+  TStrings.failedToLoadPasswordSettings: "فشل في تحميل إعدادات كلمة المرور",
+  TStrings.failedToCheckTenantAvailability: "فشل في التحقق من توفر اسم مساحة العمل",
+  TStrings.failedToRegisterTenant: "فشل في تسجيل مساحة العمل",
+  TStrings.failedToAuthenticate: "فشل في تسجيل الدخول",
+  TStrings.loginInfoError: "خطأ في معلومات تسجيل الدخول",
+  TStrings.failedToLoadLoginInfo: "فشل في تحميل معلومات تسجيل الدخول",
 
   //start screen
   TStrings.startScreenTitle: "أنشئ حسابك المجاني",
@@ -49,6 +62,7 @@ Map<String, String> ar = {
   //validationKeys
   TStrings.textRequired: "هذا الحقل اجباري",
   TStrings.emailNotValid: "البريد الالكتروني غير صالح",
+  TStrings.nameNotValid: "الاسم غير صالح",
   TStrings.workspaceNameNotValid: "اسم مساحة العمل غير صالح",
   TStrings.workspaceTaken: "اسم مساحة العمل غير متاح",
   TStrings.workspaceAvailable: "اسم مساحة العمل متاح",

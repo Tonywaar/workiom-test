@@ -19,10 +19,9 @@ class SplashController extends GetxController {
   Future<void> _initializeApp() async {
     requestState(RequestState.loading);
 
-    await getLoginInfo();
+    bool result = await getLoginInfo();
     await Future.delayed(const Duration(seconds: 1));
-
-    _navigateToApp();
+    if (result) _navigateToApp();
   }
 
   void _navigateToApp() {
@@ -33,7 +32,7 @@ class SplashController extends GetxController {
     return UserService.instance.isAuthenticated ? Routes.HOME : Routes.AUTH;
   }
 
-  Future<void> getLoginInfo() async {
+  Future<bool> getLoginInfo() async {
     final result = await _splashRepo.getCurrentLoginInformation();
 
     if (result is DataSuccess<GeneralResponse<LoginInformationData>>) {
@@ -41,6 +40,15 @@ class SplashController extends GetxController {
       Tenant? tenant = result.data?.result?.tenant;
 
       UserService.instance.setUserData(user: user, tenant: tenant);
+
+      return true;
+    } else {
+      requestState(RequestState.error);
+      AppFunctions.showErrorDialog(
+        title: TStrings.loginInfoError,
+        description: result.error?.data?.toString() ?? TStrings.failedToLoadLoginInfo.tr,
+      );
     }
+    return false;
   }
 }

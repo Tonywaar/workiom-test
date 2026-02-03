@@ -52,7 +52,8 @@ class WorkspaceBody extends StatelessWidget {
           hint: TStrings.enterFirstName.tr,
           prefix: CustomSvg(Assets.icons.name),
           controller: controller.firstNameController,
-          validator: AppFunctions.requiredValidator,
+          validator: AppFunctions.nameValidator,
+          keyboardType: .name,
         ),
 
         25.verticalSpace,
@@ -61,7 +62,8 @@ class WorkspaceBody extends StatelessWidget {
           hint: TStrings.enterLastName.tr,
           prefix: CustomSvg(Assets.icons.name),
           controller: controller.lastNameController,
-          validator: AppFunctions.requiredValidator,
+          validator: AppFunctions.nameValidator,
+          keyboardType: .name,
         ),
       ],
     );

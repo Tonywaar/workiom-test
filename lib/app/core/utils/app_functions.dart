@@ -38,6 +38,16 @@ class AppFunctions {
     }
   }
 
+  static String? nameValidator(String? val) {
+    if (val == null || val.isEmpty) {
+      return TStrings.textRequired.tr;
+    } else if (!RegExp(r'^[a-zA-Z]+$').hasMatch(val)) {
+      return TStrings.nameNotValid.tr;
+    } else {
+      return null;
+    }
+  }
+
   static String? workspaceValidator(String? val) {
     if (val == null || val.isEmpty) {
       return TStrings.textRequired.tr;
@@ -81,5 +91,32 @@ class AppFunctions {
   static Future<String> getIanaTimeZone() async {
     final timezoneInfo = await FlutterTimezone.getLocalTimezone();
     return timezoneInfo.identifier;
+  }
+
+  static void showErrorDialog({required String title, required String description}) {
+    Get.dialog(
+      Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.r)),
+        child: Padding(
+          padding: EdgeInsets.all(25.w),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              CustomSvg(Assets.icons.wrong, width: 60.w, height: 60.w),
+              20.verticalSpace,
+              Text(
+                title.tr,
+                style: Get.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+                textAlign: TextAlign.center,
+              ),
+              10.verticalSpace,
+              Text(description, style: Get.textTheme.bodyMedium, textAlign: TextAlign.center),
+              25.verticalSpace,
+              CustomButton(title: TStrings.ok.tr, onTap: () => Get.back()),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
