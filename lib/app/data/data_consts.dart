@@ -6,7 +6,7 @@ class DataConsts {
   static const String serverUrl = "https://api.workiom.club";
   static const String imagesUrl = serverUrl;
   static const String baseUrl = "$serverUrl/api";
-  static const String serviceUrl = "$baseUrl/services/app";
+  static const String serviceUrl = "/services/app";
 
   static const String getCurrentLoginInformation =
       '$serviceUrl/Session/GetCurrentLoginInformations';
@@ -16,7 +16,7 @@ class DataConsts {
   static const String getEditionsForSelect = '$serviceUrl/TenantRegistration/GetEditionsForSelect';
   static const String postTenantAvailable = '$serviceUrl/TenantRegistration/RegisterTenant';
 
-  static const String postAuthenticate = '$baseUrl/TokenAuth/Authenticate';
+  static const String postAuthenticate = '/TokenAuth/Authenticate';
 }
 
 Map<String, dynamic> headers({bool isForm = false}) => {
