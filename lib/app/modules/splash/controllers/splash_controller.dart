@@ -19,8 +19,9 @@ class SplashController extends GetxController {
   Future<void> _initializeApp() async {
     requestState(RequestState.loading);
 
-    await Future.delayed(const Duration(seconds: 1));
     await getLoginInfo();
+    await Future.delayed(const Duration(seconds: 1));
+
     _navigateToApp();
   }
 

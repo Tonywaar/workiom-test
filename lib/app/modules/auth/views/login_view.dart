@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:workiom/app/modules/auth/views/company_view.dart';
 import 'package:workiom/export.dart';
 
 import '../controllers/auth_controller.dart';
@@ -119,7 +120,7 @@ class _LoginViewState extends State<LoginView> {
                     withEnter: true,
                     title: TStrings.confirmPassword.tr,
                     onTap: () {
-                      Get.toNamed(Routes.COMPANY);
+                      Get.to(() => CompanyView(), transition: .leftToRight);
                     },
                   ),
                 ],

@@ -1,9 +1,16 @@
 import 'package:workiom/export.dart';
 
-import '../controllers/company_controller.dart';
+import '../controllers/auth_controller.dart';
 
-class CompanyView extends GetView<CompanyController> {
+class CompanyView extends StatefulWidget {
   const CompanyView({super.key});
+
+  @override
+  State<CompanyView> createState() => _CompanyViewState();
+}
+
+class _CompanyViewState extends State<CompanyView> {
+  AuthController controller = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
