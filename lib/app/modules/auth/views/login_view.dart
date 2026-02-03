@@ -1,8 +1,9 @@
 import 'package:flutter/cupertino.dart';
-import 'package:workiom/app/modules/auth/views/company_view.dart';
+import 'package:workiom/app/modules/auth/widgets/workspace_body.dart';
 import 'package:workiom/export.dart';
 
 import '../controllers/auth_controller.dart';
+import '../widgets/login_body.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -20,7 +21,12 @@ class _LoginViewState extends State<LoginView> {
       body: Column(
         crossAxisAlignment: .start,
         children: [
-          AppTitle(title: TStrings.loginTitle, description: TStrings.screenTitleDesc),
+          Obx(() {
+            return AppTitle(
+              title: controller.screenTitles[controller.currentScreen.value],
+              description: TStrings.screenTitleDesc,
+            );
+          }),
 
           Expanded(
             child: SingleChildScrollView(
@@ -28,101 +34,26 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: .start,
                 children: [
                   75.verticalSpace,
+                  Obx(() {
+                    return AnimatedCrossFade(
+                      firstChild: LoginBody(controller: controller),
+                      secondChild: WorkspaceBody(controller: controller),
+                      crossFadeState: controller.currentScreen.value == 0
+                          ? .showFirst
+                          : .showSecond,
+                      duration: Duration(milliseconds: 400),
+                    );
+                  }),
 
-                  LabeledTextField(
-                    label: TStrings.yourWorkEmail.tr,
-                    suffixIcon: GestureDetector(
-                      onTap: () {},
-                      child: Icon(CupertinoIcons.clear_circled),
-                    ),
-                    prefix: CustomSvg(Assets.icons.message),
-                    controller: controller.emailController,
-                  ),
                   25.verticalSpace,
-                  LabeledTextField(
-                    label: TStrings.yourPassword.tr,
-
-                    isPassword: true,
-                    prefix: CustomSvg(Assets.icons.lock),
-                    controller: controller.passwordController,
-                  ),
-                  25.verticalSpace,
-                  Container(
-                    width: Get.width,
-                    height: 10,
-                    decoration: BoxDecoration(
-                      color: TColors.greyColor.withValues(alpha: .25),
-                      borderRadius: BorderRadius.circular(18.r),
-                    ),
-                    alignment: AlignmentDirectional.centerStart,
-                    child: FractionallySizedBox(
-                      widthFactor: .5,
-                      child: Container(
-                        width: Get.width,
-                        height: Get.height,
-                        decoration: BoxDecoration(
-                          color: TColors.yellowColor,
-                          borderRadius: BorderRadius.circular(18.r),
-                        ),
-                      ),
-                    ),
-                  ),
-                  25.verticalSpace,
-                  Row(
-                    mainAxisAlignment: .start,
-                    crossAxisAlignment: .center,
-                    children: [
-                      CustomSvg(Assets.icons.warning),
-                      5.horizontalSpace,
-                      Expanded(
-                        child: Text(
-                          TStrings.notStrongEnough.tr,
-                          style: Theme.of(
-                            context,
-                          ).textTheme.titleMedium?.copyWith(fontWeight: .w500),
-                        ),
-                      ),
-                    ],
-                  ),
-                  5.verticalSpace,
-                  Row(
-                    mainAxisAlignment: .start,
-                    crossAxisAlignment: .center,
-                    children: [
-                      CustomSvg(Assets.icons.wrong),
-                      5.horizontalSpace,
-                      Expanded(
-                        child: Text(
-                          "${TStrings.passwordMustHave.tr} ${TStrings.sevenChar.tr}",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  5.verticalSpace,
-                  Row(
-                    mainAxisAlignment: .start,
-                    crossAxisAlignment: .center,
-                    children: [
-                      CustomSvg(Assets.icons.right),
-                      5.horizontalSpace,
-                      Expanded(
-                        child: Text(
-                          "${TStrings.passwordMustHave.tr} ${TStrings.oneUpper.tr}",
-                          style: Theme.of(context).textTheme.bodyMedium,
-                        ),
-                      ),
-                    ],
-                  ),
-                  25.verticalSpace,
-                  CustomButton(
-                    color: TColors.greyColor,
-                    withEnter: true,
-                    title: TStrings.confirmPassword.tr,
-                    onTap: () {
-                      Get.to(() => CompanyView(), transition: .leftToRight);
-                    },
-                  ),
+                  Obx(() {
+                    return CustomButton(
+                      color: TColors.greyColor,
+                      withEnter: true,
+                      title: controller.buttonTitles[controller.currentScreen.value].tr,
+                      onTap: controller.validateAndProceed,
+                    );
+                  }),
                 ],
               ),
             ),

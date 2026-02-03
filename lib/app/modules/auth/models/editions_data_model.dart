@@ -229,7 +229,7 @@ class Edition {
   dynamic buttonLink;
   dynamic starterLineText;
   dynamic editionColor;
-  num? id;
+  int? id;
 
   Edition({
     this.name,
@@ -284,7 +284,7 @@ class Edition {
     buttonLink = json['buttonLink'];
     starterLineText = json['starterLineText'];
     editionColor = json['editionColor'];
-    id = json['id'] as num?;
+    id = json['id'];
   }
 
   Map<String, dynamic> toJson() {
