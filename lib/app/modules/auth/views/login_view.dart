@@ -80,7 +80,7 @@ class _LoginViewState extends State<LoginView> {
                         withEnter: true,
                         isLoading: controller.requestState.value.isLoading,
                         title: TStrings.login.tr,
-                        onTap: controller.authenticate,
+                        onTap: () => controller.authenticate(withLoading: true),
                       ),
                     );
                   }),

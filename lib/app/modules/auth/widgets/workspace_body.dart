@@ -30,7 +30,19 @@ class WorkspaceBody extends StatelessWidget {
         Obx(
           () => Row(
             children: [
-              34.horizontalSpace,
+              10.horizontalSpace,
+              SizedBox(
+                width: 10.w,
+                height: 10.w,
+                child: Visibility(
+                  visible: controller.checkNameRequestState.value.isLoading,
+                  child: CircularProgressIndicator(
+                    color: TColors.primary,
+                    backgroundColor: TColors.greyColor,
+                  ),
+                ),
+              ),
+              14.horizontalSpace,
               Text(
                 controller.workspaceNameError.value,
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(

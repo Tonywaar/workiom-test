@@ -17,26 +17,28 @@ class TTextFieldTheme {
       fontWeight: FontWeight.w400,
     ),
     errorStyle: const TextStyle().copyWith(fontWeight: FontWeight.normal),
-    floatingLabelStyle: const TextStyle().copyWith(color: Colors.black.withValues(alpha: .8)),
-    border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(width: 0, color: Colors.transparent),
+    floatingLabelStyle: const TextStyle().copyWith(
+      color: TColors.textPrimary.withValues(alpha: .8),
     ),
-    enabledBorder: OutlineInputBorder(
+    border: UnderlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(width: 0, color: Colors.transparent),
+      borderSide: const BorderSide(width: 0, color: TColors.greyColor),
     ),
-    focusedBorder: OutlineInputBorder(
+    enabledBorder: UnderlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(width: 0, color: Colors.transparent),
+      borderSide: const BorderSide(width: 0, color: TColors.greyColor),
     ),
-    errorBorder: OutlineInputBorder(
+    focusedBorder: UnderlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(width: 1, color: Colors.red),
+      borderSide: const BorderSide(width: 0, color: TColors.primary),
     ),
-    focusedErrorBorder: OutlineInputBorder(
+    errorBorder: UnderlineInputBorder(
       borderRadius: BorderRadius.circular(8),
-      borderSide: const BorderSide(width: 2, color: Colors.orange),
+      borderSide: const BorderSide(width: 1, color: TColors.redColor),
+    ),
+    focusedErrorBorder: UnderlineInputBorder(
+      borderRadius: BorderRadius.circular(8),
+      borderSide: const BorderSide(width: 2, color: TColors.redColor),
     ),
   );
 }

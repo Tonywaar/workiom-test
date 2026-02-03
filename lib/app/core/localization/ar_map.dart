@@ -67,10 +67,10 @@ Map<String, String> ar = {
   TStrings.logoutConfirmationDesc: "هل أنت متأكد أنك تريد تسجيل الخروج؟",
 
   //validationKeys
-  TStrings.textRequired: "هذا الحقل اجباري",
-  TStrings.emailNotValid: "البريد الالكتروني غير صالح",
-  TStrings.nameNotValid: "الاسم غير صالح",
-  TStrings.workspaceNameNotValid: "اسم مساحة العمل غير صالح",
-  TStrings.workspaceTaken: "اسم مساحة العمل غير متاح",
-  TStrings.workspaceAvailable: "اسم مساحة العمل متاح",
+  TStrings.textRequired: "*هذا الحقل اجباري",
+  TStrings.emailNotValid: "*البريد الالكتروني غير صالح",
+  TStrings.nameNotValid: "*الاسم غير صالح",
+  TStrings.workspaceNameNotValid: "*اسم مساحة العمل غير صالح",
+  TStrings.workspaceTaken: "*اسم مساحة العمل غير متاح",
+  TStrings.workspaceAvailable: "*اسم مساحة العمل متاح",
 };

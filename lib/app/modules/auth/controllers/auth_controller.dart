@@ -231,7 +231,9 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<void> authenticate() async {
+  Future<void> authenticate({bool withLoading = false}) async {
+    if (withLoading) requestState(.loading);
+
     String timeZone = await AppFunctions.getIanaTimeZone();
     AuthenticateParams params = AuthenticateParams(
       ianaTimeZone: timeZone,
@@ -254,6 +256,7 @@ class AuthController extends GetxController {
         if (loggedIn) {
           Get.offAllNamed(Routes.HOME);
         }
+        if (withLoading) requestState(.success);
       }
     } else {
       requestState(.error);

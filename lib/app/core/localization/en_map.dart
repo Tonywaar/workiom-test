@@ -67,10 +67,10 @@ Map<String, String> en = {
   TStrings.logoutConfirmationDesc: "Are you sure you want to logout?",
 
   //validationKeys
-  TStrings.textRequired: "This field is required",
-  TStrings.emailNotValid: "Invalid email address",
-  TStrings.nameNotValid: "Invalid name",
-  TStrings.workspaceNameNotValid: "Workspace or team name is not valid",
-  TStrings.workspaceTaken: "Workspace or team name is taken already",
-  TStrings.workspaceAvailable: "Workspace or team name is available",
+  TStrings.textRequired: "*This field is required",
+  TStrings.emailNotValid: "*Invalid email address",
+  TStrings.nameNotValid: "*Invalid name",
+  TStrings.workspaceNameNotValid: "*Workspace or team name is not valid",
+  TStrings.workspaceTaken: "*Workspace or team name is taken already",
+  TStrings.workspaceAvailable: "*Workspace or team name is available",
 };

@@ -13,12 +13,6 @@ class TAppTheme {
     primaryColor: TColors.primary,
     dividerColor: TColors.greyColor,
     textTheme: TTextTheme.lightTextTheme,
-    appBarTheme: TAppBarTheme.lightAppBarTheme,
-    textButtonTheme: TTextButtonTheme.lightTextButtonTheme,
-    checkboxTheme: TCheckboxTheme.lightCheckboxTheme,
-    bottomSheetTheme: TBottomSheetTheme.lightBottomSheetTheme,
-    outlinedButtonTheme: TOutLinedButtonTheme.lightOutLinedButtonTheme,
-    elevatedButtonTheme: TElevatedButtonTheme.lightElevatedButtonTheme,
     inputDecorationTheme: TTextFieldTheme.lightInputDecorationTheme,
     canvasColor: TColors.primary,
   );
