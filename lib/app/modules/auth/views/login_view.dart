@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:workiom/app/modules/auth/widgets/workspace_body.dart';
 import 'package:workiom/export.dart';
 
@@ -34,28 +33,31 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: .start,
                 children: [
                   75.verticalSpace,
-                  Form(
-                    key: controller.formKey,
-                    child: Obx(() {
-                      return AnimatedCrossFade(
-                        firstChild: LoginBody(controller: controller),
-                        secondChild: WorkspaceBody(controller: controller),
-                        crossFadeState: controller.currentScreen.value == 0
-                            ? .showFirst
-                            : .showSecond,
-                        duration: Duration(milliseconds: 400),
-                      );
-                    }),
-                  ),
+                  Obx(() {
+                    return AnimatedCrossFade(
+                      firstChild: Form(
+                        key: controller.loginFormKey,
+                        child: LoginBody(controller: controller),
+                      ),
+                      secondChild: Form(
+                        key: controller.workspaceFormKey,
+                        child: WorkspaceBody(controller: controller),
+                      ),
+                      crossFadeState: controller.currentScreen.value == 0
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
+                      duration: Duration(milliseconds: 400),
+                    );
+                  }),
 
                   25.verticalSpace,
                   Obx(() {
+                    bool isValid = controller.currentScreen.value == 0
+                        ? controller.countOfPassedRules.value == controller.numberOfRules
+                        : true;
+
                     return CustomButton(
-                      color: controller.currentScreen.value == 0
-                          ? controller.countOfPassedRules.value == controller.numberOfRules
-                                ? TColors.primary
-                                : TColors.greyColor
-                          : TColors.greyColor,
+                      color: isValid ? TColors.primary : TColors.greyColor,
                       withEnter: true,
                       title: controller.buttonTitles[controller.currentScreen.value].tr,
                       onTap: controller.validateAndProceed,

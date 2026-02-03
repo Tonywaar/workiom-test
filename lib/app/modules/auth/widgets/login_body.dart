@@ -15,11 +15,13 @@ class LoginBody extends StatelessWidget {
       children: [
         LabeledTextField(
           label: TStrings.yourWorkEmail.tr,
+          hint: "example@email.com",
           suffixIcon: IconButton(
             onPressed: () => controller.emailController.clear(),
             icon: Icon(CupertinoIcons.clear_circled),
           ),
           prefix: CustomSvg(Assets.icons.message),
+
           controller: controller.emailController,
           validator: AppFunctions.emailValidator,
           keyboardType: TextInputType.emailAddress,
@@ -27,6 +29,7 @@ class LoginBody extends StatelessWidget {
         25.verticalSpace,
         LabeledTextField(
           label: TStrings.yourPassword.tr,
+          hint: "**************",
           isPassword: true,
           prefix: CustomSvg(Assets.icons.lock),
           controller: controller.passwordController,

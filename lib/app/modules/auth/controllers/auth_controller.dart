@@ -21,7 +21,8 @@ class AuthController extends GetxController {
   List<String> screenTitles = [TStrings.loginTitle, TStrings.companyTitle];
   List<String> buttonTitles = [TStrings.confirmPassword, TStrings.createWorkSpace];
 
-  final formKey = GlobalKey<FormState>();
+  final loginFormKey = GlobalKey<FormState>();
+  final workspaceFormKey = GlobalKey<FormState>();
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -31,10 +32,11 @@ class AuthController extends GetxController {
   TextEditingController lastNameController = TextEditingController();
 
   void validateAndProceed() {
-    if (!formKey.currentState!.validate()) return;
     if (currentScreen.value == 0) {
+      if (!loginFormKey.currentState!.validate()) return;
       currentScreen.value = 1;
     } else {
+      if (!workspaceFormKey.currentState!.validate()) return;
       currentScreen.value = 0;
     }
   }
@@ -82,7 +84,6 @@ class AuthController extends GetxController {
         passwordSettings.requireNonAlphanumericPassed.value = true;
       }
     }
-    print(countOfPassedRules.value == numberOfRules ? null : "");
     return countOfPassedRules.value == numberOfRules ? null : "";
   }
 
