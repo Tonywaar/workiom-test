@@ -1,7 +1,7 @@
-import 'package:workiom/app/modules/splash/repo/splash_repo.dart';
 import 'package:workiom/export.dart';
 
 import '../models/login_info_model.dart';
+import 'splash_repo.dart';
 
 class SplashRepoImpl implements SplashRepo {
   final DataService _dataService = injector();
