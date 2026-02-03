@@ -21,7 +21,7 @@ class AppFunctions {
 
   static String? requiredValidator(String? val) {
     if (val == null || val.isEmpty) {
-      return 'This field is required'.tr;
+      return TStrings.textRequired.tr;
     } else {
       return null;
     }
@@ -29,9 +29,9 @@ class AppFunctions {
 
   static String? emailValidator(String? val) {
     if (val == null || val.isEmpty) {
-      return 'This field is required'.tr;
+      return TStrings.textRequired.tr;
     } else if (!GetUtils.isEmail(val)) {
-      return 'Invalid email address'.tr;
+      return TStrings.emailNotValid.tr;
     } else {
       return null;
     }

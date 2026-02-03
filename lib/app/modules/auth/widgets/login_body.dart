@@ -44,7 +44,7 @@ class LoginBody extends StatelessWidget {
             return CustomButton(
               color: TColors.redColor.withValues(alpha: .25),
               svg: Assets.icons.wrong,
-              title: "Something went wrong, Retry",
+              title: TStrings.somethingWentWrong.tr,
               textColor: TColors.redColor,
               onTap: () => controller.getPasswordSettings(),
             );

@@ -4,6 +4,7 @@ Map<String, String> ar = {
   //shared
   TStrings.stayOrganizedWith: "حافظ على تنظيمك مع",
   TStrings.workiom: "وركيوم",
+  TStrings.somethingWentWrong: "حدث خطأ، اعادة التحميل",
 
   //start screen
   TStrings.startScreenTitle: "أنشئ حسابك المجاني",
@@ -44,4 +45,8 @@ Map<String, String> ar = {
 
   //home
   TStrings.homeTitle: "شكرًا لاختيارك\nووركيوم",
+
+  //validationKeys
+  TStrings.textRequired: "هذا الحقل اجباري",
+  TStrings.emailNotValid: "البريد الالكتروني غير صالح",
 };

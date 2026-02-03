@@ -3,6 +3,7 @@ class TStrings {
   static String stayOrganizedWith = "stayOrganizedWith";
   static String workiom = "workiom";
   static String screenTitleDesc = "startScreenTitleDesc";
+  static String somethingWentWrong = "somethingWentWrong";
 
   //start screen
   static String startScreenTitle = "startScreenTitle";
@@ -42,4 +43,8 @@ class TStrings {
 
   //home
   static String homeTitle = "homeTitle";
+
+  //validationKeys
+  static String textRequired = "textRequired";
+  static String emailNotValid = "textRequired";
 }

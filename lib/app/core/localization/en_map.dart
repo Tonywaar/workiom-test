@@ -5,6 +5,7 @@ Map<String, String> en = {
   TStrings.stayOrganizedWith: "Stay organized with",
   TStrings.workiom: "Workiom",
   TStrings.screenTitleDesc: "Let's start an amazing journey! 👋🏻",
+  TStrings.somethingWentWrong: "Something went wrong, Retry",
 
   //start screen
   TStrings.startScreenTitle: "Create your free account",
@@ -44,4 +45,8 @@ Map<String, String> en = {
 
   //home
   TStrings.homeTitle: "Thank you for choosing\nWorkiom",
+
+  //validationKeys
+  TStrings.textRequired: "This field is required",
+  TStrings.emailNotValid: "Invalid email address",
 };
