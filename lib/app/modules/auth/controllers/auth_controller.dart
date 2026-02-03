@@ -1,7 +1,11 @@
+import 'package:workiom/app/modules/auth/models/authenticate_params.dart';
 import 'package:workiom/app/modules/auth/models/password_complexity_data_model.dart';
+import 'package:workiom/app/modules/auth/models/register_tenant_params.dart';
 import 'package:workiom/export.dart';
 
+import '../models/authenticate_data_model.dart';
 import '../models/editions_data_model.dart';
+import '../models/register_tenant_data_model.dart';
 import '../models/tenant_available_data_model.dart';
 import '../repo/auth_repo.dart';
 import '../repo/auth_repo_impl.dart';
@@ -47,13 +51,15 @@ class AuthController extends GetxController {
         requestState(.error);
         return;
       }
-      await checkTenantName(workspaceController.text);
-      if (workspaceNameError.value.isNotEmpty) {
-        requestState(.error);
 
+      await checkTenantName(workspaceController.text);
+
+      if (workspaceNameError.value != TStrings.workspaceAvailable.tr) {
+        requestState(.error);
         return;
       }
-      currentScreen.value = 0;
+
+      await register();
       requestState(.success);
     }
   }
@@ -176,5 +182,48 @@ class AuthController extends GetxController {
       }
       checkNameRequestState(.error);
     }
+  }
+
+  Future<void> register() async {
+    RegisterTenantParams params = RegisterTenantParams(
+      adminEmailAddress: emailController.text,
+      adminFirstName: firstNameController.text,
+      adminLastName: lastNameController.text,
+      adminPassword: passwordController.text,
+      editionId: selectedEditionId.toString(),
+      name: workspaceController.text,
+      tenancyName: workspaceController.text,
+    );
+    String timeZone = await AppFunctions.getIanaTimeZone();
+
+    var result = await _authRepo.postRegisterTenant(params: params, timeZone: timeZone);
+
+    if (result is DataSuccess<GeneralResponse<RegisterTenantData>>) {
+      if (result.data?.result?.tenantId != null) {
+        authenticate();
+      }
+    } else {}
+  }
+
+  Future<void> authenticate() async {
+    String timeZone = await AppFunctions.getIanaTimeZone();
+    AuthenticateParams params = AuthenticateParams(
+      ianaTimeZone: timeZone,
+      password: passwordController.text,
+      userNameOrEmailAddress: emailController.text,
+      tenantName: workspaceController.text,
+      returnUrl: null,
+      rememberClient: false,
+      singleSignIn: false,
+    );
+
+    var result = await _authRepo.postAuthenticate(params: params);
+
+    if (result is DataSuccess<GeneralResponse<AuthenticateData>>) {
+      if (result.data?.result?.accessToken != null) {
+        cache.write(CacheHelper.token, result.data?.result?.accessToken);
+        Get.offAllNamed(Routes.SPLASH);
+      }
+    } else {}
   }
 }
