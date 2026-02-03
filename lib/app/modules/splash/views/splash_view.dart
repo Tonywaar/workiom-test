@@ -16,7 +16,7 @@ class SplashView extends GetView<SplashController> {
             25.verticalSpace,
             Obx(() {
               return Visibility(
-                visible: controller.isLoading.value,
+                visible: controller.requestState.value.isLoading,
                 child: LinearProgressIndicator(
                   backgroundColor: TColors.greyColor,
                   color: TColors.primary,

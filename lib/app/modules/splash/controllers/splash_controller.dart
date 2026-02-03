@@ -1,7 +1,12 @@
 import 'package:workiom/export.dart';
 
+import '../repo/splash_repo.dart';
+import '../repo/splash_repo_impl.dart';
+
 class SplashController extends GetxController {
-  var isLoading = true.obs;
+  final SplashRepo _splashRepo = SplashRepoImpl();
+
+  final Rx<RequestState> requestState = RequestState.begin.obs;
 
   @override
   void onInit() {
@@ -11,10 +16,10 @@ class SplashController extends GetxController {
   }
 
   Future<void> _initializeApp() async {
-    isLoading(true);
-    await initDependencies();
+    requestState(RequestState.loading);
 
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 1));
+    await getLoginInfo();
     _navigateToApp();
   }
 
@@ -24,5 +29,12 @@ class SplashController extends GetxController {
 
   static String get _getInitialRoute {
     return cache.read(CacheHelper.token) == null ? Routes.AUTH : Routes.HOME;
+  }
+
+  Future<void> getLoginInfo() async {
+    final result = await _splashRepo.getCurrentLoginInformation();
+
+    print(result.data?.unAuthorizedRequest);
+    print(result.data?.result?.user);
   }
 }

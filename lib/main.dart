@@ -7,6 +7,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
+  await initDependencies();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
