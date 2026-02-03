@@ -25,6 +25,9 @@ class TStrings {
   static String passwordMustHave = "passwordMustHave";
   static String sevenChar = "sevenChar";
   static String oneUpper = "oneUpper";
+  static String oneLower = "oneLower";
+  static String oneNumber = "oneNumber";
+  static String oneNonAlphanumeric = "oneNonAlphanumeric";
   static String confirmPassword = "confirmPassword";
 
   //company

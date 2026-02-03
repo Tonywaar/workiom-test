@@ -25,8 +25,11 @@ Map<String, String> en = {
   TStrings.notStrongEnough: "Not Strong Enough",
   TStrings.strongPassword: "Strong Password",
   TStrings.passwordMustHave: "Passwords must have at least",
-  TStrings.sevenChar: "7 characters",
+  TStrings.sevenChar: "characters",
   TStrings.oneUpper: "one uppercase ['A'-'Z']",
+  TStrings.oneLower: "one lowercase ['a'-'z']",
+  TStrings.oneNumber: "one number ['0'-'9']",
+  TStrings.oneNonAlphanumeric: "one non alphanumeric",
   TStrings.confirmPassword: "Confirm password",
 
   //company

@@ -25,8 +25,11 @@ Map<String, String> ar = {
   TStrings.notStrongEnough: "غير قوية بما يكفي",
   TStrings.strongPassword: "كلمة مرور قوية",
   TStrings.passwordMustHave: "يجب أن تحتوي كلمة المرور على الأقل على",
-  TStrings.sevenChar: "7 أحرف",
+  TStrings.sevenChar: "أحرف",
   TStrings.oneUpper: "حرف كبير واحد ['A'-'Z']",
+  TStrings.oneLower: "حرف صغير واحد ['a'-'z']",
+  TStrings.oneNumber: "رقم واحد ['0'-'9']",
+  TStrings.oneNonAlphanumeric: "رمز واحد",
   TStrings.confirmPassword: "تأكيد كلمة المرور",
 
   //company
