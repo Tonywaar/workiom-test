@@ -1,3 +1,4 @@
+import 'package:workiom/app/modules/splash/models/login_info_model.dart';
 import 'package:workiom/export.dart';
 
 import '../repo/splash_repo.dart';
@@ -28,13 +29,18 @@ class SplashController extends GetxController {
   }
 
   static String get _getInitialRoute {
-    return cache.read(CacheHelper.token) == null ? Routes.AUTH : Routes.HOME;
+    return UserService.instance.isAuthenticated ? Routes.AUTH : Routes.HOME;
   }
 
   Future<void> getLoginInfo() async {
     final result = await _splashRepo.getCurrentLoginInformation();
 
-    print(result.data?.unAuthorizedRequest);
-    print(result.data?.result?.user);
+    if (result is DataSuccess<GeneralResponse<LoginInfoModel>>) {
+      String? user = result.data?.result?.user;
+      String? tenant = result.data?.result?.tenant;
+      String? token = user != null || tenant != null ? 'token' : null;
+
+      UserService.instance.setUserData(token: token, user: user, tenant: tenant);
+    }
   }
 }

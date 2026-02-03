@@ -1,6 +1,6 @@
 class LoginInfoModel {
-  dynamic user;
-  dynamic tenant;
+  String? user;
+  String? tenant;
   Application? application;
 
   LoginInfoModel({this.user, this.tenant, this.application});

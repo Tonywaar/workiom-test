@@ -5,6 +5,6 @@ GetStorage cache = GetStorage();
 class CacheHelper {
   static const String token = 'token';
   static const String language = 'language';
-
-  static String get userToken => cache.read(token) ?? "";
+  static const String user = 'user';
+  static const String tenant = 'tenant';
 }
