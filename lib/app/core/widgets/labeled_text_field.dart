@@ -25,9 +25,11 @@ class LabeledTextField extends StatefulWidget {
     this.textColor,
     this.bgColor,
     this.onFieldSubmitted,
+    this.onTapOutside,
     this.onChanged,
     this.prefix,
     this.readOnly = false,
+    this.autoValidateMode = false,
     this.colorOfEye,
   });
 
@@ -51,10 +53,12 @@ class LabeledTextField extends StatefulWidget {
   final FocusNode? nextFocusNode;
   final TextInputAction? textInputAction;
   final Function(String)? onFieldSubmitted;
+  final Function()? onTapOutside;
   final Function(String)? onChanged;
   final Color? textColor;
   final Color? bgColor;
   final bool readOnly;
+  final bool autoValidateMode;
   final Color? colorOfEye;
 
   @override
@@ -84,7 +88,10 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 cursorColor: TColors.primary,
                 focusNode: widget.focusNode,
                 textInputAction: widget.textInputAction,
-                onTapOutside: (event) => FocusScope.of(context).unfocus(),
+                onTapOutside: (event) {
+                  widget.onTapOutside?.call();
+                  FocusScope.of(context).unfocus();
+                },
                 onFieldSubmitted: (value) {
                   if (widget.textInputAction == TextInputAction.next) {
                     FocusScope.of(context).requestFocus(widget.nextFocusNode);
@@ -94,6 +101,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 onChanged: (value) {
                   widget.onChanged?.call(value);
                 },
+                autovalidateMode: widget.autoValidateMode ? AutovalidateMode.always : null,
                 maxLength: widget.maxLength,
                 textAlign: widget.isCentered ? TextAlign.center : widget.textAlign,
                 textDirection: widget.textDirection,

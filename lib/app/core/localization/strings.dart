@@ -47,4 +47,7 @@ class TStrings {
   //validationKeys
   static String textRequired = "textRequired";
   static String emailNotValid = "emailNotValid";
+  static String workspaceNameNotValid = "workspaceNameNotValid";
+  static String workspaceTaken = "workspaceTaken";
+  static String workspaceAvailable = "workspaceAvailable";
 }

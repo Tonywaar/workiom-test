@@ -59,6 +59,7 @@ class _LoginViewState extends State<LoginView> {
                     return CustomButton(
                       color: isValid ? TColors.primary : TColors.greyColor,
                       withEnter: true,
+                      isLoading: controller.requestState.value.isLoading,
                       title: controller.buttonTitles[controller.currentScreen.value].tr,
                       onTap: controller.validateAndProceed,
                     );

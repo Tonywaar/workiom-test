@@ -12,10 +12,10 @@ class DataConsts {
       '$serviceUrl/Session/GetCurrentLoginInformations';
   static const String getPasswordComplexitySetting =
       '$serviceUrl/Profile/GetPasswordComplexitySetting';
-
   static const String getEditionsForSelect = '$serviceUrl/TenantRegistration/GetEditionsForSelect';
-  static const String postTenantAvailable = '$serviceUrl/TenantRegistration/RegisterTenant';
 
+  static const String postTenantAvailable = '$serviceUrl/Account/IsTenantAvailable';
+  static const String postRegisterTenant = '$serviceUrl/TenantRegistration/RegisterTenant';
   static const String postAuthenticate = '/TokenAuth/Authenticate';
 }
 

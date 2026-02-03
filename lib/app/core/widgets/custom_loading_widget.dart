@@ -28,7 +28,12 @@ class CustomLoadingWidget extends StatelessWidget {
                 decoration: BoxDecoration(borderRadius: BorderRadius.circular(100.r), color: color),
                 child: Row(
                   mainAxisAlignment: .center,
-                  children: [AspectRatio(aspectRatio: 1, child: CircularProgressIndicator())],
+                  children: [
+                    AspectRatio(
+                      aspectRatio: 1,
+                      child: CircularProgressIndicator(color: Colors.white),
+                    ),
+                  ],
                 ),
               ),
             ),

@@ -49,4 +49,7 @@ Map<String, String> ar = {
   //validationKeys
   TStrings.textRequired: "هذا الحقل اجباري",
   TStrings.emailNotValid: "البريد الالكتروني غير صالح",
+  TStrings.workspaceNameNotValid: "اسم مساحة العمل غير صالح",
+  TStrings.workspaceTaken: "اسم مساحة العمل غير متاح",
+  TStrings.workspaceAvailable: "اسم مساحة العمل متاح",
 };

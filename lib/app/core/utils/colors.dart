@@ -10,6 +10,7 @@ class TColors {
 
   static const Color redColor = Color(0xFFFF776F);
   static const Color greenColor = Color(0xFF5BD77E);
+  static const Color darkGreenColor = Color(0xFF198A3B);
   static const Color yellowColor = Color(0xffF5C044);
 
   static const Color textPrimary = Color(0xFF0E0F12);

@@ -20,9 +20,33 @@ class WorkspaceBody extends StatelessWidget {
           ),
           prefix: CustomSvg(Assets.icons.group),
           controller: controller.workspaceController,
-          validator: AppFunctions.requiredValidator,
+          validator: AppFunctions.workspaceValidator,
+          onFieldSubmitted: (value) => controller.checkTenantName(value),
+          autoValidateMode: true,
+          onChanged: (_) => controller.workspaceNameError.value = "",
+          onTapOutside: () => controller.checkTenantName(controller.workspaceController.text),
         ),
-        25.verticalSpace,
+        Obx(
+          () => Row(
+            children: [
+              34.horizontalSpace,
+              Text(
+                controller.workspaceNameError.value,
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  color:
+                      controller.checkNameRequestState.value.isError &&
+                          !controller.checkNameRequestState.value.isLoading
+                      ? TColors.redColor
+                      : TColors.darkGreenColor,
+
+                  fontSize: 12.sp,
+                  height: 0,
+                ),
+              ),
+            ],
+          ).paddingOnly(top: 2),
+        ),
+        20.verticalSpace,
         LabeledTextField(
           label: TStrings.firstName.tr,
           hint: TStrings.enterFirstName.tr,

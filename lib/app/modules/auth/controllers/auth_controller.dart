@@ -2,6 +2,7 @@ import 'package:workiom/app/modules/auth/models/password_complexity_data_model.d
 import 'package:workiom/export.dart';
 
 import '../models/editions_data_model.dart';
+import '../models/tenant_available_data_model.dart';
 import '../repo/auth_repo.dart';
 import '../repo/auth_repo_impl.dart';
 
@@ -31,13 +32,29 @@ class AuthController extends GetxController {
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
 
-  void validateAndProceed() {
+  Future<void> validateAndProceed() async {
+    requestState(.loading);
     if (currentScreen.value == 0) {
-      if (!loginFormKey.currentState!.validate()) return;
+      if (!loginFormKey.currentState!.validate()) {
+        requestState(.error);
+        return;
+      }
       currentScreen.value = 1;
+      requestState(.success);
     } else {
-      if (!workspaceFormKey.currentState!.validate()) return;
+      if (!workspaceFormKey.currentState!.validate()) {
+        workspaceNameError.value = "";
+        requestState(.error);
+        return;
+      }
+      await checkTenantName(workspaceController.text);
+      if (workspaceNameError.value.isNotEmpty) {
+        requestState(.error);
+
+        return;
+      }
       currentScreen.value = 0;
+      requestState(.success);
     }
   }
 
@@ -90,6 +107,8 @@ class AuthController extends GetxController {
   //api calls
 
   Rx<RequestState> requestState = RequestState.begin.obs;
+  Rx<RequestState> getRulesRequestState = RequestState.begin.obs;
+  Rx<RequestState> checkNameRequestState = RequestState.begin.obs;
 
   int selectedEditionId = 0;
 
@@ -110,7 +129,7 @@ class AuthController extends GetxController {
   }
 
   Future<void> getPasswordSettings() async {
-    requestState(.loading);
+    getRulesRequestState(.loading);
     var result = await _authRepo.getPasswordComplexitySetting();
     if (result is DataSuccess<GeneralResponse<PasswordComplexityData>>) {
       passwordSettings = result.data!.result!.setting!;
@@ -125,10 +144,37 @@ class AuthController extends GetxController {
       if (passwordSettings.requireNonAlphanumeric) numberOfRules++;
       if (passwordSettings.requireUppercase) numberOfRules++;
 
-      requestState(.success);
+      getRulesRequestState(.success);
       refresh();
     } else {
-      requestState(.error);
+      getRulesRequestState(.error);
+    }
+  }
+
+  Rx<String> workspaceNameError = "".obs;
+
+  Future<void> checkTenantName(String name) async {
+    workspaceNameError.value = AppFunctions.workspaceValidator(name) ?? "";
+
+    if (workspaceNameError.value.isEmpty) {
+      checkNameRequestState(.loading);
+      var result = await _authRepo.postCheckTenantAvailability(name: name);
+      if (result is DataSuccess<GeneralResponse<TenantAvailableData>>) {
+        if (result.data?.result?.tenantId == null) {
+          workspaceNameError.value = TStrings.workspaceAvailable.tr;
+          checkNameRequestState(.success);
+        } else {
+          workspaceNameError.value = TStrings.workspaceTaken.tr;
+          checkNameRequestState(.error);
+        }
+      } else {
+        checkNameRequestState(.error);
+      }
+    } else {
+      if (workspaceNameError.value == TStrings.textRequired.tr) {
+        workspaceNameError.value = "";
+      }
+      checkNameRequestState(.error);
     }
   }
 }

@@ -39,13 +39,13 @@ class LoginBody extends StatelessWidget {
         25.verticalSpace,
 
         Obx(() {
-          if (controller.requestState.value.isLoading) {
+          if (controller.getRulesRequestState.value.isLoading) {
             return LinearProgressIndicator(
               backgroundColor: TColors.greyColor,
               color: TColors.primary,
             ).paddingSymmetric(horizontal: 25);
           }
-          if (controller.requestState.value.isError) {
+          if (controller.getRulesRequestState.value.isError) {
             return CustomButton(
               color: TColors.redColor.withValues(alpha: .25),
               svg: Assets.icons.wrong,

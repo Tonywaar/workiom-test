@@ -37,6 +37,18 @@ class AppFunctions {
     }
   }
 
+  static String? workspaceValidator(String? val) {
+    if (val == null || val.isEmpty) {
+      return TStrings.textRequired.tr;
+    } else if (val.length < 4) {
+      return TStrings.workspaceNameNotValid.tr;
+    } else if (!RegExp(r'^[a-zA-Z][a-zA-Z0-9-]*$').hasMatch(val)) {
+      return TStrings.workspaceNameNotValid.tr;
+    } else {
+      return null;
+    }
+  }
+
   static bool isLTR(String text) {
     final englishRegex = RegExp(r'[a-zA-Z]');
     final arabicRegex = RegExp(r'[\u0600-\u06FF]');
