@@ -8,17 +8,6 @@ class AppFunctions {
     }
   }
 
-  static void customToast({required String message, bool isError = true}) {
-    Fluttertoast.showToast(
-      msg: message.tr,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: isError ? TColors.redColor : TColors.primary,
-      textColor: TColors.whiteColor,
-      fontSize: 16.0,
-    );
-  }
 
   static String? requiredValidator(String? val) {
     if (val == null || val.isEmpty) {
