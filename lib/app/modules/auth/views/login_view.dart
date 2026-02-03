@@ -34,16 +34,19 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: .start,
                 children: [
                   75.verticalSpace,
-                  Obx(() {
-                    return AnimatedCrossFade(
-                      firstChild: LoginBody(controller: controller),
-                      secondChild: WorkspaceBody(controller: controller),
-                      crossFadeState: controller.currentScreen.value == 0
-                          ? .showFirst
-                          : .showSecond,
-                      duration: Duration(milliseconds: 400),
-                    );
-                  }),
+                  Form(
+                    key: controller.formKey,
+                    child: Obx(() {
+                      return AnimatedCrossFade(
+                        firstChild: LoginBody(controller: controller),
+                        secondChild: WorkspaceBody(controller: controller),
+                        crossFadeState: controller.currentScreen.value == 0
+                            ? .showFirst
+                            : .showSecond,
+                        duration: Duration(milliseconds: 400),
+                      );
+                    }),
+                  ),
 
                   25.verticalSpace,
                   Obx(() {

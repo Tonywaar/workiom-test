@@ -1,3 +1,5 @@
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+
 class PasswordComplexityData {
   Setting? setting;
 
@@ -18,10 +20,15 @@ class PasswordComplexityData {
 
 class Setting {
   bool? requireDigit;
+  RxBool  requireDigitPassed = false.obs;
   bool? requireLowercase;
+  RxBool  requireLowercasePassed = false.obs;
   bool? requireNonAlphanumeric;
+  RxBool  requireNonAlphanumericPassed = false.obs;
   bool? requireUppercase;
+  RxBool  requireUppercasePassed = false.obs;
   int? requiredLength;
+  RxBool requiredLengthPassed = false.obs;
 
   Setting({
     this.requireDigit,
